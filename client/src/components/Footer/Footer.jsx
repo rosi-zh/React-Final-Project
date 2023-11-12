@@ -45,6 +45,19 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
+
+            <div className="container-fluid copyright py-4">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <Link className="fw-medium" to="/">Healthy Place</Link>, All Right Reserved.
+                        </div>
+                        <div className="col-md-6 text-center text-md-end">
+                            Designed By <a className="fw-medium" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a className="fw-medium" href="https://themewagon.com">ThemeWagon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>  
     );
 }
