@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
 
@@ -14,12 +14,12 @@ export default function Header() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <div className="navbar-nav ms-auto">
-                            <Link to="/" className="nav-item nav-link active">Home</Link>
-                            <Link to="/about" className="nav-item nav-link">About</Link>
-                            <Link to="/blog" className="nav-item nav-link">Blog</Link>
-                            <Link to="/contacts" className="nav-item nav-link">Contacts</Link>
-                            <Link to="/login" className="nav-item nav-link">Login</Link>
-                            <Link to="/register" className="nav-item nav-link">Register</Link>
+                            <NavLink to="/" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Home</NavLink>
+                            <NavLink to="/about" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>About</NavLink>
+                            <NavLink to="/blog" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Blog</NavLink>
+                            <NavLink to="/contacts" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Contacts</NavLink>
+                            <NavLink to="/login" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Login</NavLink>
+                            <NavLink to="/register" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Register</NavLink>
                         </div>
                     </div>
                 </nav>
