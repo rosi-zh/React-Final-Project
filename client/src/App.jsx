@@ -9,6 +9,7 @@ import Contacts from './components/Contacts/Contacts';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import NotFound from './components/NotFound/NotFound';
+import ArticleList from './components/ArticleList/ArticleList';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/contacts' element={<Contacts />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
+            <Route path='/articles' element={<ArticleList />}></Route>
             <Route path='*' element={<NotFound />}></Route>
         </Routes>
 

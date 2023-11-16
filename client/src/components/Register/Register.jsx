@@ -65,7 +65,7 @@ export default function Register() {
                                         <div className="invalid-feedback">*Passwords don't match.</div> */}
 
                                     <div className="form-check d-flex justify-content-center my-4">
-                                        <input className="form-check-input me-2" type="checkbox" value="" id="rememberCheck" checked />
+                                        <input className="form-check-input me-2" type="checkbox" value="" id="rememberCheck" defaultChecked />
                                         <label className="form-check-label" htmlFor="rememberCheck">Remember me</label>
                                     </div>
 
