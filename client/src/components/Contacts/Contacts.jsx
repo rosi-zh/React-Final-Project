@@ -11,7 +11,7 @@ export default function Contacts() {
                 <div className="container">
                     <div className={`section-title text-center mx-auto wow fadeInUp ${styles['contacts']}`} data-wow-delay="0.1s">
                         <p className="fs-5 fw-medium fst-italic text-primary">Contact Us</p>
-                        <h1 className="display-6">If You Have Any Query, Please Contact Us</h1>
+                        <h2 className="display-6">If You Have Any Query, Please Contact Us</h2>
                     </div>
                     <div className="row g-5 mb-5">
                         <div className="col-md-4 text-center wow fadeInUp" data-wow-delay="0.3s">

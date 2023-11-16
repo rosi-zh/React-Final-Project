@@ -24,7 +24,7 @@ export default function About() {
                         <div className="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                             <div className="section-title">
                                 <p className="fs-5 fw-medium fst-italic text-primary">About Us</p>
-                                <h1 className="display-6">You are the key of your health</h1>
+                                <h2 className="display-6">You are the key of your health</h2>
                             </div>
                             <div className="row g-3 mb-4">
                                 <div className="col-sm-4">

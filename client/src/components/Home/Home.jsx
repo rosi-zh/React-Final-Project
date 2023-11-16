@@ -10,7 +10,7 @@ export default function Home() {
             <div className="container-xxl py-5">
                 <div className="container">
                     <div className={`${styles['last-articles']} section-header text-center mx-auto mb-5 wow fadeInUp`} data-wow-delay="0.1s">
-                        <h1 className="display-5 mb-3">Latest Blog</h1>
+                        <h2 className="display-5 mb-3">Latest Articles</h2>
                         <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                     </div>
                     <div className="row g-4">
