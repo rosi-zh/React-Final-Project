@@ -16,7 +16,7 @@ export default function Header() {
                         <div className="navbar-nav ms-auto">
                             <NavLink to="/" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Home</NavLink>
                             <NavLink to="/about" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>About</NavLink>
-                            <NavLink to="/blog" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Blog</NavLink>
+                            <NavLink to="/articles" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Articles</NavLink>
                             <NavLink to="/contacts" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Contacts</NavLink>
                             <NavLink to="/login" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Login</NavLink>
                             <NavLink to="/register" className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Register</NavLink>
