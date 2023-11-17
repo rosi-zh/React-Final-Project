@@ -1,8 +1,47 @@
 import { Link } from "react-router-dom";
 import styles from "./Register.module.css";
 import PageTop from "../PageTop/PageTop";
+import { useState } from "react";
 
 export default function Register() {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [rePassword, setRePassword] = useState('');
+
+    const firstNameInputHandler = (e) => {
+        setFirstName(e.target.value);
+    }
+
+    const lastNameInputHandler = (e) => {
+        setLastName(e.target.value);
+    }
+
+    const emailInputHandler = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const passwordInputHandler = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const rePasswordInputHandler = (e) => {
+        setRePassword(e.target.value);
+    }
+
+    const registerSubmitHandler = (e) => {
+        e.preventDefault();
+        const formData = {
+            firstName,
+            lastName,
+            email,
+            password,
+            rePassword
+        }
+
+        console.log(formData);
+    }
 
     return (
         <>
@@ -21,10 +60,10 @@ export default function Register() {
 
                                 {/* <div className="alert alert-danger" role="alert"></div> */}
 
-                                <form>
+                                <form onSubmit={registerSubmitHandler}>
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="firstName">First name</label>
-                                        <input type="text" id="firstName" name="firstName" className="form-control"/>
+                                        <input type="text" id="firstName" name="firstName" className="form-control" value={firstName} onChange={firstNameInputHandler} />
                                     </div>
 
                                         {/* <div className="invalid-feedback">*First name is required.</div>
@@ -32,7 +71,7 @@ export default function Register() {
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="lastName">Last Name</label>
-                                        <input type="text" id="lastName" name="lastName" className="form-control"/>
+                                        <input type="text" id="lastName" name="lastName" className="form-control" value={lastName} onChange={lastNameInputHandler}/>
                                     </div>
 
                                         {/* <div className="invalid-feedback">*Last name is required.</div>
@@ -40,7 +79,7 @@ export default function Register() {
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="email">Email address</label>
-                                        <input type="email" id="email" name="email" className="form-control"/>
+                                        <input type="email" id="email" name="email" className="form-control" value={email} onChange={emailInputHandler}/>
                                     </div>
                                     {/* 
                                         <div className="invalid-feedback">*Email is required.</div>
@@ -49,7 +88,7 @@ export default function Register() {
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" />
+                                        <input type="password" id="password" name="password" className="form-control" value={password} onChange={passwordInputHandler}/>
                                     </div>
                                     
                                         {/* <div className="invalid-feedback">*Password is required.</div>
@@ -58,7 +97,7 @@ export default function Register() {
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="rePassword">Repeat Password</label>
-                                        <input type="password" id="rePassword" name="rePassword" className="form-control"/>
+                                        <input type="password" id="rePassword" name="rePassword" className="form-control" value={rePassword} onChange={rePasswordInputHandler}/>
                                     </div>
 
                                         {/* <div className="invalid-feedback">*Repeat Password is required.</div>
