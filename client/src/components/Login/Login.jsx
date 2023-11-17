@@ -1,8 +1,30 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import PageTop from "../PageTop/PageTop";
 import styles from "./Login.module.css";
 
+import * as authService from '../../services/authService';
+
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const emailInputHandler = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const passwordInputHandler = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const loginFormHandler = async (e) => {    
+        e.preventDefault();
+        
+        await authService.login(email, password);
+
+        navigate('/');
+    }
 
     return (
         <>
@@ -19,10 +41,10 @@ export default function Login() {
                                     <h3 className="section-subheading text-muted">to HealthyPlace</h3>
                                 </div>
 
-                                <form>
+                                <form onSubmit={loginFormHandler}>
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="email">Email address</label>
-                                        <input type="email" id="email" name="email" className="form-control" />
+                                        <input type="email" id="email" name="email" className="form-control" value={email} onChange={emailInputHandler}/>
                                     </div>
 
                                     {/* <div className="invalid-feedback">*Email is required.</div>
@@ -30,7 +52,7 @@ export default function Login() {
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" />
+                                        <input type="password" id="password" name="password" className="form-control" value={password} onChange={passwordInputHandler} />
                                     </div>
 
                                     {/* <div className="invalid-feedback">*Password is required.</div> */}
