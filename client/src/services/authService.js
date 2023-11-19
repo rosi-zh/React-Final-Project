@@ -1,5 +1,5 @@
-import { setUserData } from "../helpers/util";
-import { post } from "./api";
+import { clearUserData, setUserData } from "../helpers/util";
+import { get, post } from "./api";
 
 const endpoints = {
     register: '/users/register',
@@ -11,4 +11,14 @@ const endpoints = {
 export async function login(email, password) {
     const result = await post(endpoints.login, { email, password });
     setUserData(result);
+}
+
+export async function register(email, password) {
+    const result = await post(endpoints.register, {email, password});
+    setUserData(result);
+}
+
+export async function logout() {
+    get(endpoints.logout);
+    clearUserData();
 }
