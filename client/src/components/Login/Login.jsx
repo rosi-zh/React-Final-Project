@@ -21,8 +21,8 @@ export default function Login() {
     const loginFormHandler = async (e) => {    
         e.preventDefault();
         
-        await authService.login(email, password);
-
+        const res = await authService.login(email, password);
+        console.log(res);
         navigate('/');
     }
 
