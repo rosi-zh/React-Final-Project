@@ -26,9 +26,13 @@ export default function ArticleList() {
                         {articles.map(article => (
                             <ArticleListItem key={article._id} {...article} />
                         ))}
-                        <div className="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+
+                        {articles.length === 0 &&
+                            <h3 className="text-center wow fadeInUp">No articles yet.</h3>
+                        }
+                        {/* <div className="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
                             <a className="btn btn-primary rounded-pill py-3 px-5" href="">Load More</a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
