@@ -46,7 +46,7 @@ export default function Register() {
         <>
             <PageTop title="Register" />
 
-            <div className="container text-center">
+            <div className="container text-center wow fadeInUp">
                 <div className="card mx-4 mx-md-5 form-box">
                     <div className="card-body py-5 px-md-5">
                         <div className="row d-flex justify-content-center">
