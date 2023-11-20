@@ -1,8 +1,16 @@
+import { useEffect, useState } from "react";
+import * as dataService from '../../services/dataService';
 import PageTop from "../PageTop/PageTop";
 import ArticleListItem from "../ArticleListItem/ArticleListItem";
 import styles from "./ArticleList.module.css";
 
 export default function ArticleList() {
+    const [articles, setArticles] = useState([]);
+
+    useEffect(() => {
+        dataService.getAll()
+            .then(result => setArticles(result));
+    }, []);
 
     return (
         <>
@@ -15,7 +23,9 @@ export default function ArticleList() {
                         <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                     </div>
                     <div className="row g-4">
-                        <ArticleListItem />
+                        {articles.map(article => (
+                            <ArticleListItem key={article._id} {...article} />
+                        ))}
                         <div className="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
                             <a className="btn btn-primary rounded-pill py-3 px-5" href="">Load More</a>
                         </div>
