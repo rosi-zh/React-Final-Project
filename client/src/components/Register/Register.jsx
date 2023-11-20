@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 import PageTop from "../PageTop/PageTop";
-import { useState } from "react";
+import * as authService from "../../services/authService";
 
 export default function Register() {
+    const navigate = useNavigate();
+    
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -30,18 +33,14 @@ export default function Register() {
         setRePassword(e.target.value);
     }
 
-    const registerSubmitHandler = (e) => {
+    const registerSubmitHandler = async (e) => {
         e.preventDefault();
-        const formData = {
-            firstName,
-            lastName,
-            email,
-            password,
-            rePassword
-        }
 
-        console.log(formData);
+        const result = await authService.register(firstName, lastName, email, password);
+
+        navigate('/');
     }
+
 
     return (
         <>

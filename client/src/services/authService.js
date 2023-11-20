@@ -13,8 +13,8 @@ export async function login(email, password) {
     setUserData(result);
 }
 
-export async function register(email, password) {
-    const result = await post(endpoints.register, {email, password});
+export async function register(firstName, lastName, email, password) {
+    const result = await post(endpoints.register, {firstName, lastName, email, password});
     setUserData(result);
 }
 

@@ -22,7 +22,7 @@ export default function Login() {
         e.preventDefault();
         
         const res = await authService.login(email, password);
-        console.log(res);
+
         navigate('/');
     }
 
