@@ -11,6 +11,7 @@ import About from './components/About/About';
 import Contacts from './components/Contacts/Contacts';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import Logout from './components/Logout/Logout';
 import NotFound from './components/NotFound/NotFound';
 import ArticleList from './components/ArticleList/ArticleList';
 
@@ -25,6 +26,7 @@ function App() {
             <Route path={Path.Contacts} element={<Contacts />}></Route>
             <Route path={Path.Login} element={<Login />}></Route>
             <Route path={Path.Register} element={<Register />}></Route>
+            <Route path={Path.Logout} element={<Logout />}></Route>
             <Route path={Path.Articles} element={<ArticleList />}></Route>
             <Route path='*' element={<NotFound />}></Route>
         </Routes>

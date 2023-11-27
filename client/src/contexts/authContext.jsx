@@ -34,10 +34,17 @@ export const AuthProvider = ({
 
         navigate(Path.Home);
     }
+
+    const logoutHandler = () => {
+        setAuth({});
+
+        navigate(Path.Home);
+    }
     
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
+        logoutHandler,
         isAuth: !!auth.accessToken,
     };
 
