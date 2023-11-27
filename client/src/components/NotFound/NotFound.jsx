@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Path from "../../utils/paths";
 import PageTop from "../PageTop/PageTop";
 
 export default function NotFound() {
@@ -15,7 +16,7 @@ export default function NotFound() {
                             <h2 className="display-1">404</h2>
                             <h2 className="mb-4">Page Not Found</h2>
                             <p className="mb-4">We're sorry, the page you have looked for does not exist in our website! Maybe go to our home page.</p>
-                            <Link className="btn btn-primary rounded-pill py-3 px-5" to="/">Go Back To Home</Link>
+                            <Link className="btn btn-primary rounded-pill py-3 px-5" to={Path.Home}>Go Back To Home</Link>
                         </div>
                     </div>
                 </div>
