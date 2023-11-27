@@ -1,5 +1,5 @@
+import styles from "./Home.module.css";
 import Carousel from "../Carousel/Carousel";
-import styles from "./Home.module.css"
 
 export default function Home() {
 

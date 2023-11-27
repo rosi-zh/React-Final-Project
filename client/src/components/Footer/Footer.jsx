@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Path from "../../utils/paths";
 
 export default function Footer() {
 
@@ -21,9 +22,9 @@ export default function Footer() {
                         </div>
                         <div className="col-lg-3 col-md-6">
                             <h4 className="text-primary mb-4">Quick Links</h4>
-                            <Link className="btn btn-link" to="/about">About Us</Link>
-                            <Link className="btn btn-link" to="/contacts">Contact Us</Link>
-                            <Link className="btn btn-link" to="/blog">Blog</Link>
+                            <Link className="btn btn-link" to={Path.About}>About Us</Link>
+                            <Link className="btn btn-link" to={Path.Contacts}>Contact Us</Link>
+                            <Link className="btn btn-link" to={Path.Articles}>Articles</Link>
                         </div>
                         <div className="col-lg-3 col-md-6">
                             <h4 className="text-primary mb-4">Business Hours</h4>
@@ -50,7 +51,7 @@ export default function Footer() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <Link className="fw-medium" to="/">Healthy Place</Link>, All Right Reserved.
+                            &copy; <Link className="fw-medium" to={Path.Home}>Healthy Place</Link>, All Right Reserved.
                         </div>
                         <div className="col-md-6 text-center text-md-end">
                             Designed By <a className="fw-medium" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a className="fw-medium" href="https://themewagon.com">ThemeWagon</a>

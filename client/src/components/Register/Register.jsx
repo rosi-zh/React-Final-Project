@@ -4,9 +4,9 @@ import styles from "./Register.module.css";
 
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
+import Path from "../../utils/paths";
 
 import PageTop from "../PageTop/PageTop";
-import Path from "../../utils/paths";
 
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);

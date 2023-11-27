@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import * as dataService from '../../services/dataService';
+import styles from "./ArticleList.module.css";
+
+import * as dataService from "../../services/dataService";
+
 import PageTop from "../PageTop/PageTop";
 import ArticleListItem from "../ArticleListItem/ArticleListItem";
-import styles from "./ArticleList.module.css";
 
 export default function ArticleList() {
     const [articles, setArticles] = useState([]);

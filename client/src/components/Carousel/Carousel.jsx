@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Path from "../../utils/paths";
 
 export default function Carousel() {
 
@@ -14,7 +15,7 @@ export default function Carousel() {
                                 <div className="col-lg-7 text-center">
                                     <p className="fs-4 text-white animated zoomIn">Welcome to <strong className="text-dark">HEALTY PLACE</strong></p>
                                     <h1 className="display-1 text-dark mb-4 animated zoomIn">Everything you need to know about your health</h1>
-                                    <Link to="/blog" className="btn btn-light rounded-pill py-3 px-5 animated zoomIn">Explore More</Link>
+                                    <Link to={Path.Articles} className="btn btn-light rounded-pill py-3 px-5 animated zoomIn">Explore More</Link>
                                 </div>
                             </div>
                         </div>
@@ -28,7 +29,7 @@ export default function Carousel() {
                                 <div className="col-lg-7 text-center">
                                     <p className="fs-4 text-white animated zoomIn">Welcome to <strong className="text-dark">HEALTY PLACE</strong></p>
                                     <h1 className="display-1 text-dark mb-4 animated zoomIn">Diet & Fitness</h1>
-                                    <Link to="/blog" className="btn btn-light rounded-pill py-3 px-5 animated zoomIn">Explore More</Link>
+                                    <Link to={Path.Articles} className="btn btn-light rounded-pill py-3 px-5 animated zoomIn">Explore More</Link>
                                 </div>
                             </div>
                         </div>
