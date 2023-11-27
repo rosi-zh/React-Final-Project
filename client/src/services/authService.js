@@ -11,11 +11,15 @@ const endpoints = {
 export async function login(email, password) {
     const result = await post(endpoints.login, { email, password });
     setUserData(result);
+
+    return result;
 }
 
 export async function register(firstName, lastName, email, password) {
     const result = await post(endpoints.register, {firstName, lastName, email, password});
     setUserData(result);
+
+    return result;
 }
 
 export async function logout() {

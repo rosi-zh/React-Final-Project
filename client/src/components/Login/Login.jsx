@@ -1,19 +1,14 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import PageTop from "../PageTop/PageTop";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 
-import * as authService from '../../services/authService';
 import useForm from "../../hooks/useForm";
+import AuthContext from "../../contexts/authContext";
+
+import PageTop from "../PageTop/PageTop";
 
 export default function Login() {
-    const navigate = useNavigate();
-   
-    const loginSubmitHandler = async (values) => {
-        const res = await authService.login(values.email, values.password);
-
-        navigate('/');
-    }
+    const { loginSubmitHandler } = useContext(AuthContext);
 
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         email: '',

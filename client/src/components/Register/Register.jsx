@@ -1,18 +1,14 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Register.module.css";
-import PageTop from "../PageTop/PageTop";
-import * as authService from "../../services/authService";
+
 import useForm from "../../hooks/useForm";
+import AuthContext from "../../contexts/authContext";
+
+import PageTop from "../PageTop/PageTop";
 
 export default function Register() {
-    const navigate = useNavigate();
-    
-    const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.firstName, values.lastName, values.email, values.password);
-        
-        navigate('/');
-    }
+    const { registerSubmitHandler } = useContext(AuthContext);
     
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         firstName: '',
