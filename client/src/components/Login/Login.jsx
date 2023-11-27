@@ -4,27 +4,21 @@ import PageTop from "../PageTop/PageTop";
 import styles from "./Login.module.css";
 
 import * as authService from '../../services/authService';
+import useForm from "../../hooks/useForm";
 
 export default function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
-    const emailInputHandler = (e) => {
-        setEmail(e.target.value);
-    }
-
-    const passwordInputHandler = (e) => {
-        setPassword(e.target.value);
-    }
-
-    const loginFormHandler = async (e) => {    
-        e.preventDefault();
-        
-        const res = await authService.login(email, password);
+   
+    const loginSubmitHandler = async (values) => {
+        const res = await authService.login(values.email, values.password);
 
         navigate('/');
     }
+
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        email: '',
+        password: ''
+    })
 
     return (
         <>
@@ -41,10 +35,10 @@ export default function Login() {
                                     <h3 className="section-subheading text-muted">to HealthyPlace</h3>
                                 </div>
 
-                                <form onSubmit={loginFormHandler}>
+                                <form onSubmit={onSubmit}>
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="email">Email address</label>
-                                        <input type="email" id="email" name="email" className="form-control" value={email} onChange={emailInputHandler}/>
+                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={onChange}/>
                                     </div>
 
                                     {/* <div className="invalid-feedback">*Email is required.</div>
@@ -52,7 +46,7 @@ export default function Login() {
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" value={password} onChange={passwordInputHandler} />
+                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={onChange} />
                                     </div>
 
                                     {/* <div className="invalid-feedback">*Password is required.</div> */}
