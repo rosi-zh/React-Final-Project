@@ -6,6 +6,7 @@ import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
 
 import PageTop from "../PageTop/PageTop";
+import Path from "../../utils/paths";
 
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
@@ -86,7 +87,7 @@ export default function Register() {
                                     <button type="submit" className={`btn text-uppercase mb-4 px-4 ${styles['register-btn']}`}>Register</button>
 
                                     <div>
-                                        <h6>Already have an account? <Link to="/login">Login</Link></h6>
+                                        <h6>Already have an account? <Link to={Path.Login}>Login</Link></h6>
                                     </div>
                                 </form>
                             </div>

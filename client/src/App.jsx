@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import { AuthProvider } from './contexts/authContext';
+import Path from './utils/paths';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -19,12 +20,12 @@ function App() {
         <Header />
         
         <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/about' element={<About />}></Route>
-            <Route path='/contacts' element={<Contacts />}></Route>
-            <Route path='/login' element={<Login />}></Route>
-            <Route path='/register' element={<Register />}></Route>
-            <Route path='/articles' element={<ArticleList />}></Route>
+            <Route path={Path.Home} element={<Home />}></Route>
+            <Route path={Path.About} element={<About />}></Route>
+            <Route path={Path.Contacts} element={<Contacts />}></Route>
+            <Route path={Path.Login} element={<Login />}></Route>
+            <Route path={Path.Register} element={<Register />}></Route>
+            <Route path={Path.Articles} element={<ArticleList />}></Route>
             <Route path='*' element={<NotFound />}></Route>
         </Routes>
 

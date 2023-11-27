@@ -1,4 +1,4 @@
-import { clearUserData, setUserData } from "../helpers/util";
+import { clearUserData, setUserData } from "../utils/util";
 import { get, post } from "./api";
 
 const endpoints = {

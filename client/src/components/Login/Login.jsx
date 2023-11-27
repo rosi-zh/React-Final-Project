@@ -6,6 +6,7 @@ import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
 
 import PageTop from "../PageTop/PageTop";
+import Path from "../../utils/paths";
 
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
@@ -54,7 +55,7 @@ export default function Login() {
                                     <button type="submit" className={`btn text-uppercase mb-4 px-4 ${styles['login-btn']}`}>Login</button>
 
                                     <div>
-                                        <h6>Not a member? <Link to="/register">Register</Link></h6>
+                                        <h6>Not a member? <Link to={Path.Register}>Register</Link></h6>
                                     </div>
                                 </form>
                             </div>
