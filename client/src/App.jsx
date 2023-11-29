@@ -4,6 +4,8 @@ import './App.css';
 import { AuthProvider } from './contexts/authContext';
 import Path from './utils/paths';
 
+import AuthGuard from './guards/AuthGuard';
+import GuestGuard from './guards/GuestGuard';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -14,8 +16,6 @@ import Register from './components/Register/Register';
 import Logout from './components/Logout/Logout';
 import NotFound from './components/NotFound/NotFound';
 import ArticleList from './components/ArticleList/ArticleList';
-import AuthGuard from './guards/AuthGuard';
-import GuestGuard from './guards/GuestGuard';
 
 function App() {
   return (

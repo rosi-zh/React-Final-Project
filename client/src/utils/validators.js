@@ -3,7 +3,7 @@ export function emailValidator(email) {
     
     if (!email) {
         return 'Email is required';
-    } else if (regex.test(email)) {
+    } else if (regex.test(email) === false) {
         return 'Invalid email address';
     }
 
