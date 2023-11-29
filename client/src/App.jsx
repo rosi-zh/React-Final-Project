@@ -15,6 +15,7 @@ import Logout from './components/Logout/Logout';
 import NotFound from './components/NotFound/NotFound';
 import ArticleList from './components/ArticleList/ArticleList';
 import AuthGuard from './guards/AuthGuard';
+import GuestGuard from './guards/GuestGuard';
 
 function App() {
   return (
@@ -25,14 +26,18 @@ function App() {
             <Route path={Path.Home} element={<Home />}></Route>
             <Route path={Path.About} element={<About />}></Route>
             <Route path={Path.Contacts} element={<Contacts />}></Route>
-            <Route path={Path.Login} element={<Login />}></Route>
-            <Route path={Path.Register} element={<Register />}></Route>
             <Route path={Path.Articles} element={<ArticleList />}></Route>
             <Route path='*' element={<NotFound />}></Route>
 
             <Route element={<AuthGuard />}>
                 <Route path={Path.Logout} element={<Logout />}></Route>
             </Route>
+
+            <Route element={<GuestGuard />}>
+                <Route path={Path.Login} element={<Login />}></Route>
+                <Route path={Path.Register} element={<Register />}></Route>
+            </Route>
+
         </Routes>
 
         <Footer />
