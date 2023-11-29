@@ -14,6 +14,7 @@ import Register from './components/Register/Register';
 import Logout from './components/Logout/Logout';
 import NotFound from './components/NotFound/NotFound';
 import ArticleList from './components/ArticleList/ArticleList';
+import AuthGuard from './guards/AuthGuard';
 
 function App() {
   return (
@@ -26,9 +27,12 @@ function App() {
             <Route path={Path.Contacts} element={<Contacts />}></Route>
             <Route path={Path.Login} element={<Login />}></Route>
             <Route path={Path.Register} element={<Register />}></Route>
-            <Route path={Path.Logout} element={<Logout />}></Route>
             <Route path={Path.Articles} element={<ArticleList />}></Route>
             <Route path='*' element={<NotFound />}></Route>
+
+            <Route element={<AuthGuard />}>
+                <Route path={Path.Logout} element={<Logout />}></Route>
+            </Route>
         </Routes>
 
         <Footer />
