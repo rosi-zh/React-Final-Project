@@ -41,7 +41,7 @@ export function repeatPasswordValidator(rePassword, form) {
 export function nameValidator(fieldName, value) {
     if (!value) {
         return `${fieldName} is required`;
-    } else if (value.length < 2) {
+    } else if (value.length <= 1) {
         return `${fieldName} must be atleast 2 characters long`;
     }
 

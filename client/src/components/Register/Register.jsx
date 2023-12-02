@@ -5,19 +5,50 @@ import styles from "./Register.module.css";
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
 import Path from "../../utils/paths";
+import { useRegisterFormValidator } from "../../hooks/useRegisterFormValidator";
 
 import PageTop from "../PageTop/PageTop";
 
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
     
-    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+    const { values, onChange } = useForm(registerSubmitHandler, {
         firstName: '',
         lastName: '',
         email: '',
         password: '',
         rePassword: ''
     })
+
+    const { errors, validateForm, onBlurField } = useRegisterFormValidator(values);
+
+    const onUpdateField = (e) => {
+        const field = e.target.name;
+
+        onChange(e);
+        
+        if (errors[field].dirty) {
+            validateForm({
+                form: values,
+                errors,
+                field
+            });
+        }
+
+        console.log(errors)
+    };
+
+    const onSubmitForm = (e) => {
+        e.preventDefault();
+
+        const { isValid } = validateForm({ form: values, errors, forceTouchErrors: true });
+        
+        if (!isValid) {
+            return;
+        }
+
+        registerSubmitHandler(values);
+    }
 
     return (
         <>
@@ -36,48 +67,41 @@ export default function Register() {
 
                                 {/* <div className="alert alert-danger" role="alert"></div> */}
 
-                                <form onSubmit={onSubmit}>
+                                <form onSubmit={onSubmitForm}>
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="firstName">First name</label>
-                                        <input type="text" id="firstName" name="firstName" className="form-control" value={values.firstName} onChange={onChange} />
+                                        <input type="text" id="firstName" name="firstName" className="form-control" value={values.firstName} onChange={onUpdateField} onBlur={onBlurField} />
                                     </div>
 
-                                        {/* <div className="invalid-feedback">*First name is required.</div>
-                                        <div className="invalid-feedback">*First name must be at least ... characters long.</div> */}
+                                    {errors.firstName.dirty && errors.firstName.error && <div className='invalid-feedback'>{errors.firstName.message}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="lastName">Last Name</label>
-                                        <input type="text" id="lastName" name="lastName" className="form-control" value={values.lastName} onChange={onChange}/>
+                                        <input type="text" id="lastName" name="lastName" className="form-control" value={values.lastName} onChange={onUpdateField} onBlur={onBlurField}/>
                                     </div>
 
-                                        {/* <div className="invalid-feedback">*Last name is required.</div>
-                                        <div className="invalid-feedback">*Last name must be at least ... characters long.</div> */}
+                                    {errors.lastName.dirty && errors.lastName.error && <div className='invalid-feedback'>{errors.lastName.message}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="email">Email address</label>
-                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={onChange}/>
+                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={onUpdateField} onBlur={onBlurField}/>
                                     </div>
-                                    {/* 
-                                        <div className="invalid-feedback">*Email is required.</div>
-                                        <div className="invalid-feedback">*Email is invalid.</div> */}
-
+                                    
+                                    {errors.email.dirty && errors.email.error && <div className='invalid-feedback'>{errors.email.message}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={onChange}/>
+                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={onUpdateField} onBlur={onBlurField}/>
                                     </div>
                                     
-                                        {/* <div className="invalid-feedback">*Password is required.</div>
-                                        <div className="invalid-feedback">*Password must be at least ... characters long.</div> */}
-
+                                    {errors.password.dirty && errors.password.error && <div className='invalid-feedback'>{errors.password.message}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="rePassword">Repeat Password</label>
-                                        <input type="password" id="rePassword" name="rePassword" className="form-control" value={values.rePassword} onChange={onChange}/>
+                                        <input type="password" id="rePassword" name="rePassword" className="form-control" value={values.rePassword} onChange={onUpdateField} onBlur={onBlurField}/>
                                     </div>
 
-                                        {/* <div className="invalid-feedback">*Repeat Password is required.</div>
-                                        <div className="invalid-feedback">*Passwords don't match.</div> */}
+                                    {errors.rePassword.dirty && errors.rePassword.error && <div className='invalid-feedback'>{errors.rePassword.message}</div>}
 
                                     <div className="form-check d-flex justify-content-center my-4">
                                         <input className="form-check-input me-2" type="checkbox" value="" id="rememberCheck" defaultChecked />
