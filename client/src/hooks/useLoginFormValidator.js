@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { emailValidator, passwordValidator } from "../utils/validators";
+import { emailValidator, loginPasswordValidator } from "../utils/validators";
 
 const touchErrors = (errors) => {
     return Object.entries(errors).reduce((acc, [field, fieldError]) => {
@@ -47,7 +47,7 @@ export const useLoginFormValidator = (form) => {
         }
     
         if (nextErrors.password.dirty && (field ? field === "password" : true)) {
-            const passwordMessage = passwordValidator(password, form);
+            const passwordMessage = loginPasswordValidator(password, form);
             nextErrors.password.error = !!passwordMessage;
             nextErrors.password.message = passwordMessage;
     

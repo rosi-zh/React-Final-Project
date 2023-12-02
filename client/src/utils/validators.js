@@ -10,6 +10,14 @@ export function emailValidator(email) {
     return '';
 }
 
+export function loginPasswordValidator(password) {
+    if (!password) {
+        return 'Password is required';
+    }
+
+    return '';
+}
+
 export function passwordValidator(password) {
     if (!password) {
         return 'Password is required';
@@ -20,11 +28,11 @@ export function passwordValidator(password) {
     return '';
 }
 
-export function repeatPasswordValidator(rePassword) {
+export function repeatPasswordValidator(rePassword, form) {
     if (!rePassword) {
         return 'Repeat password is required';
-    } else if (rePassword.length < 8) {
-        return 'Repeat password must be atleast 8 characters long';
+    } else if (rePassword !== form.password) {
+        return 'Passwords don\'t match';
     }
 
     return '';
