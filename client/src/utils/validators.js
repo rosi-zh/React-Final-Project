@@ -13,8 +13,8 @@ export function emailValidator(email) {
 export function passwordValidator(password) {
     if (!password) {
         return 'Password is required';
-    } else if (password.length < 8) {
-        return 'Password must be atleast 8 characters long';
+    } else if (password.length <= 5) {
+        return 'Password must be atleast 6 characters long';
     }
 
     return '';

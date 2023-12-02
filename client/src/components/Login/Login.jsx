@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 
@@ -7,14 +7,43 @@ import AuthContext from "../../contexts/authContext";
 
 import PageTop from "../PageTop/PageTop";
 import Path from "../../utils/paths";
+import { useLoginFormValidator } from "../../hooks/useLoginFormValidator";
 
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
 
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+    const { values, onChange } = useForm(loginSubmitHandler, {
         email: '',
         password: ''
-    })
+    });
+
+    const { errors, validateForm, onBlurField } = useLoginFormValidator(values);
+
+    const onUpdateField = (e) => {
+        const field = e.target.name;
+
+        onChange(e);
+        
+        if (errors[field].dirty) {
+            validateForm({
+                form: values,
+                errors,
+                field
+            });
+        }
+    };
+
+    const onSubmitForm = (e) => {
+        e.preventDefault();
+
+        const { isValid } = validateForm({ form: values, errors, forceTouchErrors: true });
+        
+        if (!isValid) {
+            return;
+        }
+
+        loginSubmitHandler(values);
+    }
 
     return (
         <>
@@ -31,21 +60,20 @@ export default function Login() {
                                     <h3 className="section-subheading text-muted">to HealthyPlace</h3>
                                 </div>
 
-                                <form onSubmit={onSubmit}>
+                                <form onSubmit={onSubmitForm}>
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="email">Email address</label>
-                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={onChange}/>
+                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={onUpdateField} onBlur={onBlurField}/>
                                     </div>
 
-                                    {/* <div className="invalid-feedback">*Email is required.</div>
-                                    <div className="invalid-feedback">*Email is invalid.</div> */}
+                                    {errors.email.dirty && errors.email.error && <div className='invalid-feedback'>{errors.email.message}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={onChange} />
+                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={onUpdateField} onBlur={onBlurField} />
                                     </div>
-
-                                    {/* <div className="invalid-feedback">*Password is required.</div> */}
+                                    
+                                    {errors.password.dirty && errors.password.error && <div className='invalid-feedback'>{errors.password.message}</div>}
 
                                     <div className="form-check d-flex justify-content-center my-4">
                                         <input className="form-check-input me-2" type="checkbox" value="" id="rememberCheck" defaultChecked />

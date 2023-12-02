@@ -504,3 +504,8 @@
 .copyright a:hover {
     color: #FFFFFF !important;
 }
+
+/* Invalid Feedback */
+.invalid-feedback {
+    display: inline-block;
+}

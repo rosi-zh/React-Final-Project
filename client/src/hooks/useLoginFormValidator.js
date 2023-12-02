@@ -46,7 +46,7 @@ export const useLoginFormValidator = (form) => {
             }
         }
     
-        if (nextErrors.email.dirty && (field ? field === "password" : true)) {
+        if (nextErrors.password.dirty && (field ? field === "password" : true)) {
             const passwordMessage = passwordValidator(password, form);
             nextErrors.password.error = !!passwordMessage;
             nextErrors.password.message = passwordMessage;
