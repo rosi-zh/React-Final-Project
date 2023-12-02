@@ -35,7 +35,6 @@ export default function Register() {
             });
         }
 
-        console.log(errors)
     };
 
     const onSubmitForm = (e) => {
