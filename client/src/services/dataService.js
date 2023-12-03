@@ -1,10 +1,14 @@
-import { get } from "./api";
+import { get, post } from "./api";
 
 const endpoints = {
-    all: '/data/articles'
+    all: '/data/articles',
+    create: '/data/articles'
 }
 
 export async function getAll() {
-    const data = await get(endpoints.all)
-    return Object.values(data);
+    return get(endpoints.all);
+}
+
+export async function create(articleData) {
+    return post(endpoints.create, articleData);
 }
