@@ -20,5 +20,5 @@ export default function ArticleListItem({
                 </div>
             </div>
         </div>
-);
+    );
 }
