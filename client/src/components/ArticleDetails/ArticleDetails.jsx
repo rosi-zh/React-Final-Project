@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import * as dataService from "../../services/dataService";
 
 import PageTop from "../PageTop/PageTop";
+import AuthContext from "../../contexts/authContext";
+import Path from "../../utils/paths";
 
 export default function ArticleDetails() {
+    const navigate = useNavigate();
+    const { userId } = useContext(AuthContext);
     const { articleId } = useParams();
     const [article, setArticle] = useState({});
 
@@ -13,6 +17,16 @@ export default function ArticleDetails() {
         dataService.getById(articleId)
             .then(result => setArticle(result));
     }, []);
+
+    const deleteButtonHandler = async () => {
+        const hasConfirmed = confirm(`Are you sure you want to delete ${article.title}?`);
+
+        if (hasConfirmed) {
+            await dataService.remove(articleId);
+
+            navigate(Path.Articles);
+        }
+    }
 
     return (
         <>
@@ -30,12 +44,17 @@ export default function ArticleDetails() {
                                 <h2 className="display-6">{article.title}</h2>
                             </div>
                             <p className="mb-4">{article.text}</p>
-                            <Link to={`/articles/${articleId}/edit`} className="btn btn-primary rounded-pill py-3 px-5 me-3">Edit</Link>
-                            <a href="" className="btn btn-primary rounded-pill py-3 px-5">Delete</a>
+                            {userId === article._ownerId && (
+                                <>
+                                    <Link to={`/articles/${articleId}/edit`} className="btn btn-primary rounded-pill py-3 px-5 me-3">Edit</Link>
+                                    <button onClick={deleteButtonHandler} className="btn btn-primary rounded-pill py-3 px-5">Delete</button>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
+
         </>
     );
 }

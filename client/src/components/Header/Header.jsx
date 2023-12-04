@@ -12,7 +12,7 @@ export default function Header() {
             <div className="container">
                 <nav className="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
                     <Link to={Path.Home} className="navbar-brand">
-                        <img className="img-fluid" src="img/logo.png" alt="Logo" />
+                        <img className="img-fluid" src="/img/logo.png" alt="Logo" />
                     </Link>
                     <button type="button" className="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span className="navbar-toggler-icon"></span>

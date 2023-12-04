@@ -44,6 +44,7 @@ export const AuthProvider = ({
         registerSubmitHandler,
         logoutHandler,
         isAuth: !!auth.accessToken,
+        userId: auth._id
     };
 
     return (

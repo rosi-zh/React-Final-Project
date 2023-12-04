@@ -20,7 +20,7 @@ export default function Logout() {
         authService.logout()
             .then(() => {
                 logoutHandler();
-                console.log('LoggedOut');
+
                 navigate(Path.Home);
             })
             .catch(() => {
