@@ -18,7 +18,7 @@ export default function ArticleCreate() {
 
     const { values, onChange, onSubmit } = useForm(addArticleSubmitHandler, {
         title: '',
-        imageInput: '',
+        imageUrl: '',
         text: ''
     });
 
@@ -48,8 +48,8 @@ export default function ArticleCreate() {
                                         </div>
 
                                         <div className="form-group mt-4">
-                                            <label className="form-label" htmlFor="imageInput">Image URL</label>
-                                            <input type="text" id="imageInput" name="imageInput" className="form-control mb-3"  value={values.imageInput} onChange={onChange} />
+                                            <label className="form-label" htmlFor="imageUrl">Image URL</label>
+                                            <input type="text" id="imageUrl" name="imageUrl" className="form-control mb-3"  value={values.imageInput} onChange={onChange} />
                                         </div>
         
                                         <div className="form-group mt-4">
