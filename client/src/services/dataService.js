@@ -1,4 +1,4 @@
-import { get, post, del } from "./api";
+import { get, post, put, del } from "./api";
 
 const endpoints = {
     all: '/data/articles',

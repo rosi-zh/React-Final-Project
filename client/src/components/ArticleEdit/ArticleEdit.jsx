@@ -1,22 +1,48 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./ArticleEdit.module.css";
 
-import useForm from "../../hooks/useForm";
 import * as dataService from "../../services/dataService";
 import Path from "../../utils/paths";
 
 import PageTop from "../PageTop/PageTop";
+import { useEffect, useState } from "react";
 
 export default function ArticleEdit() {
-    const editSubmitHandler = () => {
-        console.log('Edit')
-    }
-
-    const {values, onChange, onSubmit} = useForm(editSubmitHandler, {
+    const navigate = useNavigate();
+    const { articleId } = useParams();
+    const [article, setArticle] = useState({
         title: '',
         imageUrl: '',
         text: ''
     });
+
+    useEffect(() => {
+        dataService.getById(articleId)
+            .then(result => {
+                setArticle(result);
+            });
+    }, [articleId]);
+
+    const onChange = (e) => {
+        setArticle(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    }
+
+    const editSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const values = Object.fromEntries(new FormData(e.currentTarget));
+
+        try {
+            const reslt = await dataService.edit(articleId, values);
+
+            navigate(Path.Articles);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -36,20 +62,20 @@ export default function ArticleEdit() {
 
                                     {/* <div className="alert alert-danger" role="alert"></div> */}
 
-                                    <form onSubmit={onSubmit}>
+                                    <form onSubmit={editSubmitHandler}>
                                         <div className="form-group mt-4">
                                             <label className="form-label" htmlFor="title">Title</label>
-                                            <input type="text" id="title" name="title" className="form-control" value={values.title} onChange={onChange} />
+                                            <input type="text" id="title" name="title" className="form-control" value={article.title} onChange={onChange} />
                                         </div>
 
                                         <div className="form-group mt-4">
                                             <label className="form-label" htmlFor="imageUrl">Image URL</label>
-                                            <input type="text" id="imageUrl" name="imageUrl" className="form-control mb-3" value={values.imageInput} onChange={onChange} />
+                                            <input type="text" id="imageUrl" name="imageUrl" className="form-control mb-3" value={article.imageUrl} onChange={onChange} />
                                         </div>
         
                                         <div className="form-group mt-4">
                                             <label className="form-label" htmlFor="text">Text</label>
-                                            <textarea className="form-control" id="text" name="text" rows="10" value={values.text} onChange={onChange} ></textarea>
+                                            <textarea className="form-control" id="text" name="text" rows="10" value={article.text} onChange={onChange} ></textarea>
                                         </div>
                                         <button type="submit" className={`btn text-uppercase my-4 px-4 ${styles['edit-btn']}`}>Edit</button>
                                     </form>
