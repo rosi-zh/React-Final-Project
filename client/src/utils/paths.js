@@ -8,6 +8,7 @@ const Path = {
     Articles: '/articles',
     ArticleCreate: '/articles/create',
     ArticleDetails: '/articles/:articleId',
+    ArticleEdit: '/articles/:articleId/edit',
 }
 
 export default Path;

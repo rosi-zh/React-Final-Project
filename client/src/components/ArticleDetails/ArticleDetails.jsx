@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import * as dataService from "../../services/dataService";
 
@@ -30,7 +30,7 @@ export default function ArticleDetails() {
                                 <h2 className="display-6">{article.title}</h2>
                             </div>
                             <p className="mb-4">{article.text}</p>
-                            <a href="" className="btn btn-primary rounded-pill py-3 px-5 me-3">Edit</a>
+                            <Link to={`/articles/${articleId}/edit`} className="btn btn-primary rounded-pill py-3 px-5 me-3">Edit</Link>
                             <a href="" className="btn btn-primary rounded-pill py-3 px-5">Delete</a>
                         </div>
                     </div>

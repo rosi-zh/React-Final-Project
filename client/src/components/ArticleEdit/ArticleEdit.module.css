@@ -1,0 +1,11 @@
+.edit-btn {
+    border-radius: 10em;
+    border-color: #88B44E;
+    background-color: #88B44E;
+    font-family: "Playfair Display", serif;
+    font-size: 1.2em;
+}
+
+.edit-btn:hover {
+    background-color: transparent;
+}

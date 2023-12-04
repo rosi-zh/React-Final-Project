@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./ArticleCreate.module.css";
+import styles from "./ArticleEdit.module.css";
 
 import useForm from "../../hooks/useForm";
 import * as dataService from "../../services/dataService";
@@ -7,25 +7,20 @@ import Path from "../../utils/paths";
 
 import PageTop from "../PageTop/PageTop";
 
-export default function ArticleCreate() {
-    const navigate = useNavigate();
-
-    const addArticleSubmitHandler = async (values) => {
-        const result = await dataService.create(values);
-
-        navigate(Path.Articles);
+export default function ArticleEdit() {
+    const editSubmitHandler = () => {
+        console.log('Edit')
     }
 
-    const { values, onChange, onSubmit } = useForm(addArticleSubmitHandler, {
+    const {values, onChange, onSubmit} = useForm(editSubmitHandler, {
         title: '',
         imageUrl: '',
         text: ''
     });
 
-
     return (
         <>
-            <PageTop title="Create Article" />
+            <PageTop title="Edit Article" />
 
             <section className="page-section text-center">
                 <div className="container">
@@ -35,7 +30,7 @@ export default function ArticleCreate() {
                                 <div className="col-lg-6">
 
                                     <div className="text-center mb-4">
-                                        <h2 className="section-heading text-uppercase">Add Article</h2>
+                                        <h2 className="section-heading text-uppercase">Edit Article</h2>
                                         <h3 className="section-subheading text-muted">to HealthyPlace</h3>
                                     </div>
 
@@ -49,14 +44,14 @@ export default function ArticleCreate() {
 
                                         <div className="form-group mt-4">
                                             <label className="form-label" htmlFor="imageUrl">Image URL</label>
-                                            <input type="text" id="imageUrl" name="imageUrl" className="form-control mb-3"  value={values.imageInput} onChange={onChange} />
+                                            <input type="text" id="imageUrl" name="imageUrl" className="form-control mb-3" value={values.imageInput} onChange={onChange} />
                                         </div>
         
                                         <div className="form-group mt-4">
                                             <label className="form-label" htmlFor="text">Text</label>
-                                            <textarea className="form-control" id="text" name="text" rows="10"  value={values.text} onChange={onChange} ></textarea>
+                                            <textarea className="form-control" id="text" name="text" rows="10" value={values.text} onChange={onChange} ></textarea>
                                         </div>
-                                        <button type="submit" className={`btn text-uppercase my-4 px-4 ${styles['add-btn']}`}>Add</button>
+                                        <button type="submit" className={`btn text-uppercase my-4 px-4 ${styles['edit-btn']}`}>Edit</button>
                                     </form>
                                 </div>
                             </div>

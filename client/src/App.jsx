@@ -18,6 +18,7 @@ import NotFound from './components/NotFound/NotFound';
 import ArticleList from './components/ArticleList/ArticleList';
 import ArticleCreate from './components/ArticleCreate/ArticleCreate';
 import ArticleDetails from './components/ArticleDetails/ArticleDetails';
+import ArticleEdit from './components/ArticleEdit/ArticleEdit';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
 
             <Route element={<AuthGuard />}>
                 <Route path={Path.Logout} element={<Logout />}></Route>
+                <Route path={Path.ArticleEdit} element={<ArticleEdit />}></Route>
             </Route>
 
             <Route element={<GuestGuard />}>
