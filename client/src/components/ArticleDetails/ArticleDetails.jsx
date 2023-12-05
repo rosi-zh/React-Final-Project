@@ -26,7 +26,7 @@ export default function ArticleDetails() {
 
 
     const deleteButtonHandler = async () => {
-        const hasConfirmed = confirm(`Are you sure you want to delete ${article.title}?`);
+        const hasConfirmed = confirm(`Are you sure you want to delete ${value.title}?`);
 
         if (hasConfirmed) {
             await dataService.remove(articleId);
