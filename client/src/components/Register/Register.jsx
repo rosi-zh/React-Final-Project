@@ -1,53 +1,78 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
 import styles from "./Register.module.css";
 
 import useForm from "../../hooks/useForm";
+import { useRegisterFormValidator } from "../../hooks/useRegisterFormValidator";
 import AuthContext from "../../contexts/authContext";
 import Path from "../../utils/paths";
-import { useRegisterFormValidator } from "../../hooks/useRegisterFormValidator";
+import registerValidate from "./registerValidate";
 
 import PageTop from "../PageTop/PageTop";
 
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
+    const [serverError, setServerError] = useState('');
     
-    const { values, onChange } = useForm(registerSubmitHandler, {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        rePassword: ''
-    })
+    // const { values, onChange } = useForm(registerSubmitHandler, {
+    //     firstName: '',
+    //     lastName: '',
+    //     email: '',
+    //     password: '',
+    //     rePassword: ''
+    // })
 
-    const { errors, validateForm, onBlurField } = useRegisterFormValidator(values);
+    // const { errors, validateForm, onBlurField } = useRegisterFormValidator(values);
 
-    const onUpdateField = (e) => {
-        const field = e.target.name;
+    // const onUpdateField = (e) => {
+    //     const field = e.target.name;
 
-        onChange(e);
+    //     onChange(e);
         
-        if (errors[field].dirty) {
-            validateForm({
-                form: values,
-                errors,
-                field
-            });
-        }
+    //     if (errors[field].dirty) {
+    //         validateForm({
+    //             form: values,
+    //             errors,
+    //             field
+    //         });
+    //     }
 
-    };
+    // };
 
-    const onSubmitForm = (e) => {
-        e.preventDefault();
+    // const onSubmitForm = (e) => {
+    //     e.preventDefault();
 
-        const { isValid } = validateForm({ form: values, errors, forceTouchErrors: true });
+    //     const { isValid } = validateForm({ form: values, errors, forceTouchErrors: true });
         
-        if (!isValid) {
-            return;
-        }
+    //     if (!isValid) {
+    //         return;
+    //     }
 
-        registerSubmitHandler(values);
+    //     registerSubmitHandler(values);
+    // }
+
+    const onSubmit = async (values) => {
+        try {
+            registerSubmitHandler(values);
+        } catch (error) {
+            setServerError(error.message);
+        }
     }
+
+    const formik = useFormik({
+        initialValues: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            rePassword: ''
+        },
+        validate: registerValidate,
+        onSubmit
+    });
+
+    const { values, errors, handleChange, handleBlur, handleSubmit, touched } = formik;
 
     return (
         <>
@@ -64,43 +89,43 @@ export default function Register() {
                                     <h3 className="section-subheading text-muted">to HealthyPlace</h3>
                                 </div>
 
-                                {/* <div className="alert alert-danger" role="alert"></div> */}
+                                {serverError && <div className="alert alert-danger" role="alert">{serverError}</div>}
 
-                                <form onSubmit={onSubmitForm}>
+                                <form onSubmit={handleSubmit}>
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="firstName">First name</label>
-                                        <input type="text" id="firstName" name="firstName" className="form-control" value={values.firstName} onChange={onUpdateField} onBlur={onBlurField} />
+                                        <input type="text" id="firstName" name="firstName" className="form-control" value={values.firstName} onChange={handleChange} onBlur={handleBlur} />
                                     </div>
 
-                                    {errors.firstName.dirty && errors.firstName.error && <div className='invalid-feedback'>{errors.firstName.message}</div>}
+                                    {touched.firstName && errors.firstName && <div className='invalid-feedback'>{errors.firstName}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="lastName">Last Name</label>
-                                        <input type="text" id="lastName" name="lastName" className="form-control" value={values.lastName} onChange={onUpdateField} onBlur={onBlurField}/>
+                                        <input type="text" id="lastName" name="lastName" className="form-control" value={values.lastName} onChange={handleChange} onBlur={handleBlur}/>
                                     </div>
 
-                                    {errors.lastName.dirty && errors.lastName.error && <div className='invalid-feedback'>{errors.lastName.message}</div>}
+                                    {touched.lastName && errors.lastName && <div className='invalid-feedback'>{errors.lastName}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="email">Email address</label>
-                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={onUpdateField} onBlur={onBlurField}/>
+                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={handleChange} onBlur={handleBlur}/>
                                     </div>
                                     
-                                    {errors.email.dirty && errors.email.error && <div className='invalid-feedback'>{errors.email.message}</div>}
+                                    {touched.email && errors.email && <div className='invalid-feedback'>{errors.email}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={onUpdateField} onBlur={onBlurField}/>
+                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={handleChange} onBlur={handleBlur}/>
                                     </div>
                                     
-                                    {errors.password.dirty && errors.password.error && <div className='invalid-feedback'>{errors.password.message}</div>}
+                                    {touched.password && errors.password && <div className='invalid-feedback'>{errors.password}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="rePassword">Repeat Password</label>
-                                        <input type="password" id="rePassword" name="rePassword" className="form-control" value={values.rePassword} onChange={onUpdateField} onBlur={onBlurField}/>
+                                        <input type="password" id="rePassword" name="rePassword" className="form-control" value={values.rePassword} onChange={handleChange} onBlur={handleBlur}/>
                                     </div>
 
-                                    {errors.rePassword.dirty && errors.rePassword.error && <div className='invalid-feedback'>{errors.rePassword.message}</div>}
+                                    {touched.rePassword && errors.rePassword && <div className='invalid-feedback'>{errors.rePassword}</div>}
 
                                     <div className="form-check d-flex justify-content-center my-4">
                                         <input className="form-check-input me-2" type="checkbox" value="" id="rememberCheck" defaultChecked />

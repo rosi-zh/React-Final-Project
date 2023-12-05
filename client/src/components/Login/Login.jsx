@@ -22,7 +22,7 @@ export default function Login() {
         try {
             await loginSubmitHandler(values);
         } catch (error) {
-            setServerError(error);
+            setServerError(error.message);
         } 
     }
 
@@ -52,7 +52,7 @@ export default function Login() {
                                     <h3 className="section-subheading text-muted">to HealthyPlace</h3>
                                 </div>
 
-                                {serverError && <div className="alert alert-danger" role="alert">{serverError.message}</div>}
+                                {serverError && <div className="alert alert-danger" role="alert">{serverError}</div>}
                                 
 
                                 <form onSubmit={handleSubmit}>
