@@ -7,42 +7,31 @@ import AuthContext from "../../contexts/authContext";
 
 import PageTop from "../PageTop/PageTop";
 import Path from "../../utils/paths";
+import loginValidate from "./loginValidate";
 
-const initialValues = {
-    email: '',
-    password: ''
-}
-
-const validate = (values) => {
-    const errors = {};
-    const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i;
-
-    if (!values.email) {
-        errors.email = 'Email is required';
-    } else if (!regex.test(values.email)) {
-        errors.email = 'Invalid email address';
-    }
-
-    if (!values.password) {
-        errors.password = 'Password is required';
-    } else if (values.password.length < 6) {
-        errors.password = 'Password must be atleast 6 characters long';
-    }
-
-    return errors;
-}
+const LoginFormKeys = {
+    Email: 'email',
+    Password: 'password'
+};
 
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
     const [serverError, setServerError] = useState('');
 
-    const onSubmit = (values) => {
-        loginSubmitHandler(values);
+    const onSubmit = async (values) => {
+        try {
+            await loginSubmitHandler(values);
+        } catch (error) {
+            setServerError(error);
+        } 
     }
 
     const formik = useFormik({
-        initialValues,
-        validate,
+        initialValues: {
+            [LoginFormKeys.Email]: '',
+            [LoginFormKeys.Password]: ''
+        },
+        validate: loginValidate,
         onSubmit
     });
 
@@ -68,15 +57,15 @@ export default function Login() {
 
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group mt-4">
-                                        <label className="form-label" htmlFor="email">Email address</label>
-                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={handleChange} onBlur={handleBlur}/>
+                                        <label className="form-label" htmlFor={LoginFormKeys.Email}>Email address</label>
+                                        <input type="email" id={LoginFormKeys.Email} name={LoginFormKeys.Email} className="form-control" value={values.email} onChange={handleChange} onBlur={handleBlur}/>
                                     </div>
 
                                     {touched.email && errors.email && <div className='invalid-feedback'>{errors.email}</div>}
 
                                     <div className="form-group mt-4">
-                                        <label className="form-label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={handleChange} onBlur={handleBlur} />
+                                        <label className="form-label" htmlFor={LoginFormKeys.Password}>Password</label>
+                                        <input type="password" id={LoginFormKeys.Password} name={LoginFormKeys.Password} className="form-control" value={values.password} onChange={handleChange} onBlur={handleBlur} />
                                     </div>
                                     
                                     {touched.password && errors.password && <div className='invalid-feedback'>{errors.password}</div>}

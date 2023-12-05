@@ -22,17 +22,25 @@ export const AuthProvider = ({
     });
        
     const loginSubmitHandler = async (values) => {
-        const result = await authService.login(values.email, values.password);
-        setAuth(result);
-  
-        navigate(Path.Home);
+        try {
+            const result = await authService.login(values.email, values.password);
+            setAuth(result);
+    
+            navigate(Path.Home);
+        } catch (error) {
+            throw error;
+        }
     }
 
     const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.firstName, values.lastName, values.email, values.password);
-        setAuth(result);
+        try {
+            const result = await authService.register(values.firstName, values.lastName, values.email, values.password);
+            setAuth(result);
 
-        navigate(Path.Home);
+            navigate(Path.Home);
+        } catch (error) {
+            throw error
+        }
     }
 
     const logoutHandler = () => {
