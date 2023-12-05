@@ -1,49 +1,52 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
 import styles from "./Login.module.css";
 
-import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
 
 import PageTop from "../PageTop/PageTop";
 import Path from "../../utils/paths";
-import { useLoginFormValidator } from "../../hooks/useLoginFormValidator";
+
+const initialValues = {
+    email: '',
+    password: ''
+}
+
+const validate = (values) => {
+    const errors = {};
+    const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i;
+
+    if (!values.email) {
+        errors.email = 'Email is required';
+    } else if (!regex.test(values.email)) {
+        errors.email = 'Invalid email address';
+    }
+
+    if (!values.password) {
+        errors.password = 'Password is required';
+    } else if (values.password.length < 6) {
+        errors.password = 'Password must be atleast 6 characters long';
+    }
+
+    return errors;
+}
 
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
+    const [serverError, setServerError] = useState('');
 
-    const { values, onChange } = useForm(loginSubmitHandler, {
-        email: '',
-        password: ''
-    });
-
-    const { errors, validateForm, onBlurField } = useLoginFormValidator(values);
-
-    const onUpdateField = (e) => {
-        const field = e.target.name;
-
-        onChange(e);
-        
-        if (errors[field].dirty) {
-            validateForm({
-                form: values,
-                errors,
-                field
-            });
-        }
-    };
-
-    const onSubmitForm = (e) => {
-        e.preventDefault();
-
-        const { isValid } = validateForm({ form: values, errors, forceTouchErrors: true });
-        
-        if (!isValid) {
-            return;
-        }
-
+    const onSubmit = (values) => {
         loginSubmitHandler(values);
     }
+
+    const formik = useFormik({
+        initialValues,
+        validate,
+        onSubmit
+    });
+
+    const { values, errors, handleChange, handleBlur, handleSubmit, touched } = formik;
 
     return (
         <>
@@ -60,20 +63,23 @@ export default function Login() {
                                     <h3 className="section-subheading text-muted">to HealthyPlace</h3>
                                 </div>
 
-                                <form onSubmit={onSubmitForm}>
+                                {serverError && <div className="alert alert-danger" role="alert">{serverError.message}</div>}
+                                
+
+                                <form onSubmit={handleSubmit}>
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="email">Email address</label>
-                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={onUpdateField} onBlur={onBlurField}/>
+                                        <input type="email" id="email" name="email" className="form-control" value={values.email} onChange={handleChange} onBlur={handleBlur}/>
                                     </div>
 
-                                    {errors.email.dirty && errors.email.error && <div className='invalid-feedback'>{errors.email.message}</div>}
+                                    {touched.email && errors.email && <div className='invalid-feedback'>{errors.email}</div>}
 
                                     <div className="form-group mt-4">
                                         <label className="form-label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={onUpdateField} onBlur={onBlurField} />
+                                        <input type="password" id="password" name="password" className="form-control" value={values.password} onChange={handleChange} onBlur={handleBlur} />
                                     </div>
                                     
-                                    {errors.password.dirty && errors.password.error && <div className='invalid-feedback'>{errors.password.message}</div>}
+                                    {touched.password && errors.password && <div className='invalid-feedback'>{errors.password}</div>}
 
                                     <div className="form-check d-flex justify-content-center my-4">
                                         <input className="form-check-input me-2" type="checkbox" value="" id="rememberCheck" defaultChecked />
