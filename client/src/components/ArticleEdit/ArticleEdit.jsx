@@ -1,15 +1,20 @@
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useFormik} from "formik";
 import styles from "./ArticleEdit.module.css";
 
 import * as dataService from "../../services/dataService";
 import Path from "../../utils/paths";
+import articleCreateValidate from "../ArticleCreate/aricleCreateValidate";
 
 import PageTop from "../PageTop/PageTop";
-import { useEffect, useState } from "react";
+import Loader from "../Loader/Loader";
 
 export default function ArticleEdit() {
     const navigate = useNavigate();
     const { articleId } = useParams();
+    const [serverError, setServerError] = useState('');
+
     const [article, setArticle] = useState({
         title: '',
         imageUrl: '',
@@ -23,26 +28,28 @@ export default function ArticleEdit() {
             });
     }, [articleId]);
 
-    const onChange = (e) => {
-        setArticle(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    }
-
-    const editSubmitHandler = async (e) => {
-        e.preventDefault();
-
-        const values = Object.fromEntries(new FormData(e.currentTarget));
-
+    const editArticleSubmitHandler = async (values) => {
         try {
             const reslt = await dataService.edit(articleId, values);
 
             navigate(Path.Articles);
         } catch (error) {
-            console.log(error);
+            setServerError(error.message);
         }
     }
+
+    const formik = useFormik({
+        initialValues: {
+            title: article.title,
+            imageUrl: article.imageUrl,
+            text: article.text
+        },
+        validate: articleCreateValidate,
+        onSubmit: editArticleSubmitHandler,
+        enableReinitialize: true
+    });
+
+    const { values, errors, handleChange, handleBlur, handleSubmit, touched, isSubmitting } = formik;
 
     return (
         <>
@@ -60,24 +67,33 @@ export default function ArticleEdit() {
                                         <h3 className="section-subheading text-muted">to HealthyPlace</h3>
                                     </div>
 
-                                    {/* <div className="alert alert-danger" role="alert"></div> */}
+                                    {serverError && <div className="alert alert-danger" role="alert">{serverError}</div>}
 
-                                    <form onSubmit={editSubmitHandler}>
+                                    <form onSubmit={handleSubmit}>
                                         <div className="form-group mt-4">
                                             <label className="form-label" htmlFor="title">Title</label>
-                                            <input type="text" id="title" name="title" className="form-control" value={article.title} onChange={onChange} />
+                                            <input type="text" id="title" name="title" className="form-control" value={values.title} onChange={handleChange} onBlur={handleBlur} />
                                         </div>
+
+                                        {touched.title && errors.title && <div className='invalid-feedback'>{errors.title}</div>}
 
                                         <div className="form-group mt-4">
                                             <label className="form-label" htmlFor="imageUrl">Image URL</label>
-                                            <input type="text" id="imageUrl" name="imageUrl" className="form-control mb-3" value={article.imageUrl} onChange={onChange} />
+                                            <input type="text" id="imageUrl" name="imageUrl" className="form-control mb-3" value={values.imageUrl} onChange={handleChange} onBlur={handleBlur} />
                                         </div>
+
+                                        {touched.imageUrl && errors.imageUrl && <div className='invalid-feedback'>{errors.imageUrl}</div>}
         
                                         <div className="form-group mt-4">
                                             <label className="form-label" htmlFor="text">Text</label>
-                                            <textarea className="form-control" id="text" name="text" rows="10" value={article.text} onChange={onChange} ></textarea>
+                                            <textarea className="form-control" id="text" name="text" rows="10" value={values.text} onChange={handleChange} onBlur={handleBlur}></textarea>
                                         </div>
-                                        <button type="submit" className={`btn text-uppercase my-4 px-4 ${styles['edit-btn']}`}>Edit</button>
+
+                                        {touched.text && errors.text && <div className='invalid-feedback'>{errors.text}</div>}
+
+                                        {isSubmitting && <Loader />}
+
+                                        <button type="submit" className={`btn text-uppercase my-4 px-4 ${styles['edit-btn']}`} disabled={isSubmitting}>Edit</button>
                                     </form>
                                 </div>
                             </div>
