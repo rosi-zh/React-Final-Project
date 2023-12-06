@@ -39,7 +39,7 @@ export const AuthProvider = ({
 
             navigate(Path.Home);
         } catch (error) {
-            throw error
+            throw error;
         }
     }
 

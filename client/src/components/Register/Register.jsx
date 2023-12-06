@@ -54,7 +54,7 @@ export default function Register() {
 
     const onSubmit = async (values) => {
         try {
-            registerSubmitHandler(values);
+            await registerSubmitHandler(values);
         } catch (error) {
             setServerError(error.message);
         }

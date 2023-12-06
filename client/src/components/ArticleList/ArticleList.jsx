@@ -20,10 +20,6 @@ export default function ArticleList() {
         return dataService.getAll();
     }, []);
 
-    if (error) {
-        console.log(error);
-    }
-
     return (
         <>
             <PageTop title="Articles" />
@@ -42,7 +38,7 @@ export default function ArticleList() {
                             <ArticleListItem key={article._id} {...article} />
                         ))}
 
-                        {value.length === 0 &&
+                        {value.length === 0 && error &&
                             <h3 className="text-center wow fadeInUp">No articles yet.</h3>
                         }
                         {/* <div className="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
