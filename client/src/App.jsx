@@ -19,6 +19,7 @@ import ArticleList from './components/ArticleList/ArticleList';
 import ArticleCreate from './components/ArticleCreate/ArticleCreate';
 import ArticleDetails from './components/ArticleDetails/ArticleDetails';
 import ArticleEdit from './components/ArticleEdit/ArticleEdit';
+import OwnerGuard from './guards/OwnerGuard';
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
 
             <Route element={<AuthGuard />}>
                 <Route path={Path.Logout} element={<Logout />}></Route>
+            </Route>
+
+            <Route element={<OwnerGuard />}>
                 <Route path={Path.ArticleEdit} element={<ArticleEdit />}></Route>
             </Route>
 
