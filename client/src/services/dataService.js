@@ -3,7 +3,8 @@ import { get, post, put, del } from "./api";
 const endpoints = {
     all: '/data/articles',
     create: '/data/articles',
-    byId: '/data/articles/'
+    byId: '/data/articles/',
+    last: '/data/articles?sortBy=_createdOn%20desc&'
 }
 
 export async function getAll() {
@@ -12,6 +13,12 @@ export async function getAll() {
 
 export async function getById(id) {
     return get(endpoints.byId + id);
+}
+
+export async function getLast() {
+    const query = encodeURIComponent('offset=0&pageSize=3');
+    
+    return get(endpoints.last + query);
 }
 
 export async function create(articleData) {

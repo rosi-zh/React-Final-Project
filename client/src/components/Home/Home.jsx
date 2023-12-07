@@ -1,8 +1,17 @@
 import "./Home.css";
+
+import * as dataService from "../../services/dataService";
+
+import useAsync from "../../hooks/useAsync";
 import Carousel from "../Carousel/Carousel";
+import ArticleListItem from "../ArticleListItem/ArticleListItem";
+
 
 export default function Home() {
-
+    const { loading, error, value } = useAsync(() => {
+        return dataService.getLast();
+    }, []);
+    
     return (
         <>
             <Carousel />
@@ -14,36 +23,9 @@ export default function Home() {
                         <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                     </div>
                     <div className="row g-4">
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <img className="img-fluid" src="img/blog-1.jpg" alt="" />
-                            <div className="bg-light p-4">
-                                <a className="d-block h5 lh-base mb-4" href="">Lorem ipsum dolor sit, amet consectetur adipisicing elit</a>
-                                <div className="text-muted border-top pt-4">
-                                    <small className="me-3"><i className="fa fa-user text-primary me-2"></i>Admin</small>
-                                    <small className="me-3"><i className="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <img className="img-fluid" src="img/blog-2.jpg" alt="" />
-                            <div className="bg-light p-4">
-                                <a className="d-block h5 lh-base mb-4" href="">Lorem ipsum dolor sit, amet consectetur adipisicing elit</a>
-                                <div className="text-muted border-top pt-4">
-                                    <small className="me-3"><i className="fa fa-user text-primary me-2"></i>Admin</small>
-                                    <small className="me-3"><i className="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <img className="img-fluid" src="img/blog-3.jpg" alt="" />
-                            <div className="bg-light p-4">
-                                <a className="d-block h5 lh-base mb-4" href="">Lorem ipsum dolor sit, amet consectetur adipisicing elit</a>
-                                <div className="text-muted border-top pt-4">
-                                    <small className="me-3"><i className="fa fa-user text-primary me-2"></i>Admin</small>
-                                    <small className="me-3"><i className="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
-                                </div>
-                            </div>
-                        </div>
+                    {value.map(article => (
+                            <ArticleListItem key={article._id} {...article} />
+                        ))}
                     </div>
                 </div>
             </div>
