@@ -16,7 +16,10 @@ export async function getById(id) {
 }
 
 export async function getLast() {
-    const query = encodeURIComponent('offset=0&pageSize=3');
+    const query = new URLSearchParams({
+        offset: 0,
+        pageSize: 3}
+    );
     
     return get(endpoints.last + query);
 }
