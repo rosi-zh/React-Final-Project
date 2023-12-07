@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik} from "formik";
-import styles from "./ArticleCreate.module.css";
+import "./ArticleCreate.css";
 
 import * as dataService from "../../services/dataService";
 import Path from "../../utils/paths";
@@ -55,21 +55,21 @@ export default function ArticleCreate() {
                                     {serverError && <div className="alert alert-danger" role="alert">{serverError}</div>}
 
                                     <form onSubmit={handleSubmit}>
-                                        <div className="form-group mt-4">
+                                        <div className="form-group">
                                             <label className="form-label" htmlFor="title">Title</label>
                                             <input type="text" id="title" name="title" className="form-control" value={values.title} onChange={handleChange} onBlur={handleBlur} />
                                         </div>
 
                                         {touched.title && errors.title && <div className='invalid-feedback'>{errors.title}</div>}
 
-                                        <div className="form-group mt-4">
+                                        <div className="form-group">
                                             <label className="form-label" htmlFor="imageUrl">Image URL</label>
                                             <input type="text" id="imageUrl" name="imageUrl" className="form-control mb-3"  value={values.imageInput} onChange={handleChange} onBlur={handleBlur} />
                                         </div>
 
                                         {touched.imageUrl && errors.imageUrl && <div className='invalid-feedback'>{errors.imageUrl}</div>}
         
-                                        <div className="form-group mt-4">
+                                        <div className="form-group">
                                             <label className="form-label" htmlFor="text">Text</label>
                                             <textarea className="form-control" id="text" name="text" rows="10"  value={values.text} onChange={handleChange} onBlur={handleBlur}></textarea>
                                         </div>
@@ -78,7 +78,7 @@ export default function ArticleCreate() {
 
                                         {isSubmitting && <Loader />}
                                         
-                                        <button type="submit" className={`btn text-uppercase my-4 px-4 ${styles['add-btn']}`} disabled={isSubmitting}>Add</button>
+                                        <button type="submit" className="btn text-uppercase my-4 px-4 btn-base" disabled={isSubmitting}>Add</button>
                                     </form>
                                 </div>
                             </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "./ArticleList.module.css";
+import "./ArticleList.css";
 
 import * as dataService from "../../services/dataService";
 
@@ -29,7 +29,7 @@ export default function ArticleList() {
 
                 {!loading && (
                     <div className="container">
-                    <div className={`section-header text-center mx-auto mb-5 wow fadeInUp ${styles['articles']}`} data-wow-delay="0.1s">
+                    <div className="section-header text-center mx-auto mb-5 wow fadeInUp articles" data-wow-delay="0.1s">
                         <h2 className="display-5 mb-3">Latest Articles</h2>
                         <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                     </div>

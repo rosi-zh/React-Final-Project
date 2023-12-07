@@ -1,10 +1,8 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import styles from "./Register.module.css";
+import "./Register.css";
 
-import useForm from "../../hooks/useForm";
-import { useRegisterFormValidator } from "../../hooks/useRegisterFormValidator";
 import AuthContext from "../../contexts/authContext";
 import Path from "../../utils/paths";
 import registerValidate from "./registerValidate";
@@ -14,43 +12,6 @@ import PageTop from "../PageTop/PageTop";
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
     const [serverError, setServerError] = useState('');
-    
-    // const { values, onChange } = useForm(registerSubmitHandler, {
-    //     firstName: '',
-    //     lastName: '',
-    //     email: '',
-    //     password: '',
-    //     rePassword: ''
-    // })
-
-    // const { errors, validateForm, onBlurField } = useRegisterFormValidator(values);
-
-    // const onUpdateField = (e) => {
-    //     const field = e.target.name;
-
-    //     onChange(e);
-        
-    //     if (errors[field].dirty) {
-    //         validateForm({
-    //             form: values,
-    //             errors,
-    //             field
-    //         });
-    //     }
-
-    // };
-
-    // const onSubmitForm = (e) => {
-    //     e.preventDefault();
-
-    //     const { isValid } = validateForm({ form: values, errors, forceTouchErrors: true });
-        
-    //     if (!isValid) {
-    //         return;
-    //     }
-
-    //     registerSubmitHandler(values);
-    // }
 
     const onSubmit = async (values) => {
         try {
@@ -132,7 +93,7 @@ export default function Register() {
                                         <label className="form-check-label" htmlFor="rememberCheck">Remember me</label>
                                     </div>
 
-                                    <button type="submit" className={`btn text-uppercase mb-4 px-4 ${styles['register-btn']}`}>Register</button>
+                                    <button type="submit" className="btn text-uppercase mb-4 px-4 btn-base">Register</button>
 
                                     <div>
                                         <h6>Already have an account? <Link to={Path.Login}>Login</Link></h6>

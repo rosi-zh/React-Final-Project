@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFormik} from "formik";
-import styles from "./ArticleEdit.module.css";
+import "./ArticleEdit.css";
 
 import * as dataService from "../../services/dataService";
 import Path from "../../utils/paths";
@@ -93,7 +93,7 @@ export default function ArticleEdit() {
 
                                         {isSubmitting && <Loader />}
 
-                                        <button type="submit" className={`btn text-uppercase my-4 px-4 ${styles['edit-btn']}`} disabled={isSubmitting}>Edit</button>
+                                        <button type="submit" className="btn text-uppercase my-4 px-4 btn-base"  disabled={isSubmitting}>Edit</button>
                                     </form>
                                 </div>
                             </div>

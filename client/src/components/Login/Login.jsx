@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import styles from "./Login.module.css";
+import "./Login.css";
 
 import AuthContext from "../../contexts/authContext";
 
@@ -75,7 +75,7 @@ export default function Login() {
                                         <label className="form-check-label" htmlFor="rememberCheck">Remember me</label>
                                     </div>
 
-                                    <button type="submit" className={`btn text-uppercase mb-4 px-4 ${styles['login-btn']}`}>Login</button>
+                                    <button type="submit" className="btn text-uppercase mb-4 px-4 btn-sec">Login</button>
 
                                     <div>
                                         <h6>Not a member? <Link to={Path.Register}>Register</Link></h6>

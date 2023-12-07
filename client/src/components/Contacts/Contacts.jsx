@@ -1,4 +1,4 @@
-import styles from "./Contacts.module.css";
+import "./Contacts.css";
 import PageTop from "../PageTop/PageTop";
 
 export default function Contacts() {
@@ -9,7 +9,7 @@ export default function Contacts() {
 
             <div className="container-xxl contact py-5">
                 <div className="container">
-                    <div className={`section-title text-center mx-auto wow fadeInUp ${styles['contacts']}`} data-wow-delay="0.1s">
+                    <div className="section-title text-center mx-auto wow fadeInUp contact-header" data-wow-delay="0.1s">
                         <p className="fs-5 fw-medium fst-italic text-primary">Contact Us</p>
                         <h2 className="display-6">If You Have Any Query, Please Contact Us</h2>
                     </div>
@@ -58,7 +58,7 @@ export default function Contacts() {
                                     </div>
                                     <div className="col-12">
                                         <div className="form-floating">
-                                            <textarea className={`form-control ${styles['text-field']}`} placeholder="Leave a message here" id="message"></textarea>
+                                            <textarea className="form-control text-field" placeholder="Leave a message here" id="message"></textarea>
                                             <label htmlFor="message">Message</label>
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@ export default function Contacts() {
                         </div>
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div className="h-100">
-                                <iframe className={`w-100 rounded ${styles['map']}`}
+                                <iframe className="w-100 rounded map"
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d23668.398184018282!2d24.7693312!3d42.138520799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sbg!2sbg!4v1699876486363!5m2!1sbg!2sbg"
                                 allowFullScreen="" aria-hidden="false"
                                 tabIndex="0"></iframe>

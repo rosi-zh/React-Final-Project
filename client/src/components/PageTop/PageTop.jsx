@@ -1,3 +1,5 @@
+import "./PageTop.css";
+
 export default function PageTop(props) {
 
     return (
