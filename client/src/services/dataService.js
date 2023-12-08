@@ -4,6 +4,7 @@ const endpoints = {
     all: '/data/articles',
     create: '/data/articles',
     byId: '/data/articles/',
+    byOwner: '/data/articles?',
     last: '/data/articles?sortBy=_createdOn%20desc&'
 }
 
@@ -22,6 +23,14 @@ export async function getLast() {
     );
     
     return get(endpoints.last + query);
+}
+
+export async function getByOwnerId(ownerId) {
+    const query = new URLSearchParams({
+        where: `_ownerId="${ownerId}"`
+    });
+
+    return get(endpoints.byOwner + query);
 }
 
 export async function create(articleData) {

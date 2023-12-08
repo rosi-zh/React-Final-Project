@@ -26,3 +26,7 @@ export async function logout() {
     get(endpoints.logout);
     clearUserData();
 }
+
+export async function profile() {
+    return await get(endpoints.profile);
+}

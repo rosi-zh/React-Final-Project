@@ -33,6 +33,7 @@ export default function Header() {
                             {isAuth && (
                                 <>
                                     <NavLink to={Path.ArticleCreate} className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Create Article</NavLink>
+                                    <NavLink to={Path.Profile} className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Profile</NavLink>
                                     <NavLink to={Path.Logout} className={`nav-item nav-link ${(isActive) => isActive ? 'active' : '' }`}>Logout</NavLink>
                                 </>
                             )}

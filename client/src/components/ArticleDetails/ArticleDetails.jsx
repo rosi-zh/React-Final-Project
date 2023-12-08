@@ -22,7 +22,7 @@ export default function ArticleDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        Promise.all([dataService.getById(articleId), likeService.getAll()])
+        Promise.all([dataService.getById(articleId), likeService.getAll(articleId)])
             .then(([resArticle, resLikes]) => {
                 setArticle(resArticle);
                 setLikes(resLikes.length);
@@ -101,6 +101,9 @@ export default function ArticleDetails() {
                                             <button onClick={likeButtonHandler} className="btn rounded-pill py-3 px-5 btn-base">{!hasLiked ? "Like" : "Unlike"}</button>
                                         )}
                                     </div>
+
+                                    {error && <div className="alert alert-danger my-3" role="alert">{error}</div>}
+
                                 </div>
                                 <div className="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                                     <div className="section-title">

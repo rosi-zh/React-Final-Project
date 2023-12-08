@@ -3,6 +3,7 @@ const Path = {
     Login: '/login',
     Register: '/register',
     Logout: '/logout',
+    Profile: '/profile',
     About: '/about',
     Contacts: '/contacts',
     NotFound: '/404',
