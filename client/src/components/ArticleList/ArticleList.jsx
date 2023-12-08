@@ -25,14 +25,15 @@ export default function ArticleList() {
             <PageTop title="Articles" />
 
             <div className="container-xxl py-6">
-                {loading && <Loader />}
 
-                {!loading && (
-                    <div className="container">
+                <div className="container">
                     <div className="section-header text-center mx-auto mb-5 wow fadeInUp articles" data-wow-delay="0.1s">
-                        <h2 className="display-5 mb-3">Latest Articles</h2>
-                        <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                        <h2 className="display-5 mb-3">Healthy Articles</h2>
+                        <p>Unlocking Wellness: Nutrition, Exercise, Mental Health, and Holistic Balance</p>
                     </div>
+                    
+                    {loading && <Loader />}
+                    
                     <div className="row g-4">
                         {value.map(article => (
                             <ArticleListItem key={article._id} {...article} />
@@ -46,7 +47,6 @@ export default function ArticleList() {
                         </div> */}
                     </div>
                 </div>
-                )}
             </div>
         </>
     );
