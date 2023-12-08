@@ -1,26 +1,16 @@
-import { useEffect, useState } from "react";
 import "./ArticleList.css";
 
 import * as dataService from "../../services/dataService";
+import useAsync from "../../hooks/useAsync";
 
 import PageTop from "../PageTop/PageTop";
 import ArticleListItem from "../ArticleListItem/ArticleListItem";
-import useAsync from "../../hooks/useAsync";
 import Loader from "../Loader/Loader";
 
 export default function ArticleList() {
-    // const [articles, setArticles] = useState([]);
-
-    // useEffect(() => {
-    //     dataService.getAll()
-    //         .then(result => setArticles(result));
-    // }, []);
-
     const { loading, error, value } = useAsync(() => {
         return dataService.getAll();
     }, []);
-
-    console.log(value.length);
 
     return (
         <>
