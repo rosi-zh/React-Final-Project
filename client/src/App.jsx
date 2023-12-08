@@ -32,7 +32,7 @@ function App() {
             <Route path={Path.Articles} element={<ArticleList />}></Route>
             <Route path={Path.ArticleCreate} element={<ArticleCreate />}></Route>
             <Route path={Path.ArticleDetails} element={<ArticleDetails />}></Route>
-
+            <Route path={Path.NotFound} element={<NotFound />}></Route>
             <Route path="*" element={<NotFound />}></Route>
 
             <Route element={<AuthGuard />}>

@@ -5,6 +5,7 @@ const Path = {
     Logout: '/logout',
     About: '/about',
     Contacts: '/contacts',
+    NotFound: '/404',
     Articles: '/articles',
     ArticleCreate: '/articles-create',
     ArticleDetails: '/articles/:articleId',

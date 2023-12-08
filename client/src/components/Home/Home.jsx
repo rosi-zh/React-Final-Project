@@ -33,7 +33,7 @@ export default function Home() {
                         ))}
 
                         
-                        {value.length === 0 && error &&
+                        {(value.length === 0 || error) &&
                             <h3 className="text-center wow fadeInUp">No articles yet.</h3>
                         }
                     </div>
