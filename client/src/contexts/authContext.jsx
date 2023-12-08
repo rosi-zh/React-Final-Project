@@ -52,7 +52,9 @@ export const AuthProvider = ({
         registerSubmitHandler,
         logoutHandler,
         isAuth: !!auth.accessToken,
-        userId: auth._id
+        userId: auth._id,
+        email: auth.email,
+        fullName: `${auth.firstName} ${auth.lastName}`,
     };
 
     return (

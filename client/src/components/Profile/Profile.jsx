@@ -1,4 +1,6 @@
 import { useState, useEffect, useContext } from "react";
+import "./Profile.css";
+
 import useAsync from "../../hooks/useAsync";
 import AuthContext from "../../contexts/authContext";
 import * as authService from "../../services/authService";
@@ -9,55 +11,53 @@ import ArticleListItem from "../ArticleListItem/ArticleListItem";
 import Loader from "../Loader/Loader";
 
 export default function Profile() {
-    const { userId } = useContext(AuthContext);
-    const [articles, setArticles] = useState([]);
-    const [user, setUser] = useState({})
-    const [loading, setLoading] = useState(true)
+    const { userId, email, fullName } = useContext(AuthContext);
 
-    useEffect(() => {
-        Promise.all([dataService.getByOwnerId(userId), authService.profile()])
-            .then(([resArticles, resProfile]) => {
-                setArticles(resArticles);
-                setUser(resProfile);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => setLoading(false));
-    },[])
+    const { loading, error, value } = useAsync(async() => {
+        return await dataService.getByOwnerId(userId)
+    });
 
     return (
         <>
             <PageTop title="My Profile" />
+            
 
-            <div className="container-xxl py-6">
-                <div className="profile-info text-center">
-                    <img src="/img/avatar.png" className="img-fluid" width="150px" />
-                    <hr />
-                    <p>Email: {user.email}</p>
-                    <p>Name: {user.username || `${user.firstName} ${user.lastName}`}</p>
-                </div>
-
-
-                <div className="container">
-                    <div className="last-articles section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
-                        <h2 className="display-5 mb-3">My Articles</h2>
+                <div className="container-xxl py-6">
+                    <div className="card profile-card mx-auto">
+                        <div className="row g-0">
+                            <div className="col-md-4 card-image">
+                                <img src="/img/avatar.png" className="card-img-top profile-image" alt="Profile picture" />
+                            </div>
+                            <div className="col-md-8">
+                                <div className="card-body">
+                                    <h5 className="card-title">Email:</h5>
+                                    <p className="card-text">{email}</p>
+                                    <h5 className="card-title">Full name:</h5>
+                                    <p className="card-text">{fullName}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    {loading && <Loader />}
+                    <div className="container">
+                        <div className="last-articles section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                            <h2 className="display-5 mb-3">My Articles</h2>
+                        </div>
 
-                    <div className="row g-4">
-                        {articles.map(article => (
-                            <ArticleListItem key={article._id} {...article} />
-                        ))}
+                        {loading && <Loader />}
 
-                        
-                        {articles.length === 0 &&
-                            <h3 className="text-center wow fadeInUp">No articles yet.</h3>
-                        }
+                        <div className="row g-4">
+                            {value.map(article => (
+                                <ArticleListItem key={article._id} {...article} />
+                            ))}
+                            
+                            {(value.length === 0 || error) &&
+                                <h3 className="text-center wow fadeInUp">No articles yet.</h3>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         </>
     );
 }
