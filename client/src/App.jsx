@@ -20,40 +20,43 @@ import ArticleList from "./components/ArticleList/ArticleList";
 import ArticleCreate from "./components/ArticleCreate/ArticleCreate";
 import ArticleDetails from "./components/ArticleDetails/ArticleDetails";
 import ArticleEdit from "./components/ArticleEdit/ArticleEdit";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 function App() {
   return (
-    <AuthProvider>
-        <Header />
-        
-        <Routes>
-            <Route path={Path.Home} element={<Home />}></Route>
-            <Route path={Path.About} element={<About />}></Route>
-            <Route path={Path.Contacts} element={<Contacts />}></Route>
-            <Route path={Path.Articles} element={<ArticleList />}></Route>
-            <Route path={Path.ArticleDetails} element={<ArticleDetails />}></Route>
-            <Route path={Path.NotFound} element={<NotFound />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
+    <ErrorBoundary>
+        <AuthProvider>
+            <Header />
+            
+            <Routes>
+                <Route path={Path.Home} element={<Home />}></Route>
+                <Route path={Path.About} element={<About />}></Route>
+                <Route path={Path.Contacts} element={<Contacts />}></Route>
+                <Route path={Path.Articles} element={<ArticleList />}></Route>
+                <Route path={Path.ArticleDetails} element={<ArticleDetails />}></Route>
+                <Route path={Path.NotFound} element={<NotFound />}></Route>
+                <Route path="*" element={<NotFound />}></Route>
 
-            <Route element={<AuthGuard />}>
-                <Route path={Path.Logout} element={<Logout />}></Route>
-                <Route path={Path.ArticleCreate} element={<ArticleCreate />}></Route>
-                <Route path={Path.Profile} element={<Profile />}></Route>
-            </Route>
+                <Route element={<AuthGuard />}>
+                    <Route path={Path.Logout} element={<Logout />}></Route>
+                    <Route path={Path.ArticleCreate} element={<ArticleCreate />}></Route>
+                    <Route path={Path.Profile} element={<Profile />}></Route>
+                </Route>
 
-            <Route element={<OwnerGuard />}>
-                <Route path={Path.ArticleEdit} element={<ArticleEdit />}></Route>
-            </Route>
+                <Route element={<OwnerGuard />}>
+                    <Route path={Path.ArticleEdit} element={<ArticleEdit />}></Route>
+                </Route>
 
-            <Route element={<GuestGuard />}>
-                <Route path={Path.Login} element={<Login />}></Route>
-                <Route path={Path.Register} element={<Register />}></Route>
-            </Route>
+                <Route element={<GuestGuard />}>
+                    <Route path={Path.Login} element={<Login />}></Route>
+                    <Route path={Path.Register} element={<Register />}></Route>
+                </Route>
 
-        </Routes>
+            </Routes>
 
-        <Footer />
-    </AuthProvider>
+            <Footer />
+        </AuthProvider>
+    </ErrorBoundary>
   )
 }
 
