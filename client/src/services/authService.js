@@ -5,7 +5,6 @@ const endpoints = {
     register: '/users/register',
     login: '/users/login',
     logout: '/users/logout',
-    profile: '/users/me'
 };
 
 export async function login(email, password) {
@@ -25,8 +24,4 @@ export async function register(firstName, lastName, email, password) {
 export async function logout() {
     get(endpoints.logout);
     clearUserData();
-}
-
-export async function profile() {
-    return await get(endpoints.profile);
 }
