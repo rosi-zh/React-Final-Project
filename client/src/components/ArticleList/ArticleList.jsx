@@ -34,9 +34,6 @@ export default function ArticleList() {
                         {(value.length === 0  || error) &&
                             <h3 className="text-center wow fadeInUp">No articles yet.</h3>
                         }
-                        {/* <div className="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a className="btn btn-primary rounded-pill py-3 px-5" href="">Load More</a>
-                        </div> */}
                     </div>
                 </div>
             </div>

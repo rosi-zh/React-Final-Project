@@ -7,7 +7,7 @@ import AuthContext from "../../contexts/authContext";
 
 import PageTop from "../PageTop/PageTop";
 import Path from "../../utils/paths";
-import loginValidate from "./loginValidate";
+import loginValidate from "../../validators/loginValidate";
 
 const LoginFormKeys = {
     Email: 'email',

@@ -5,7 +5,7 @@ import "./ArticleCreate.css";
 
 import * as dataService from "../../services/dataService";
 import Path from "../../utils/paths";
-import articleCreateValidate from "./aricleCreateValidate";
+import articleCreateValidate from "../../validators/aricleCreateValidate";
 
 import PageTop from "../PageTop/PageTop";
 import Loader from "../Loader/Loader";

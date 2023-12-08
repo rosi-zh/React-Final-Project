@@ -5,7 +5,7 @@ import "./Register.css";
 
 import AuthContext from "../../contexts/authContext";
 import Path from "../../utils/paths";
-import registerValidate from "./registerValidate";
+import registerValidate from "../../validators/registerValidate";
 
 import PageTop from "../PageTop/PageTop";
 

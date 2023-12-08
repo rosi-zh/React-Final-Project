@@ -6,7 +6,6 @@ export default function ArticleListItem({
     _id,
     title,
     imageUrl,
-    _ownerId,
     _createdOn
 }) {
 

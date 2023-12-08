@@ -6,7 +6,6 @@ import * as dataService from "../../services/dataService";
 import * as likeService from "../../services/likeService";
 import AuthContext from "../../contexts/authContext";
 import Path from "../../utils/paths";
-import useAsync from "../../hooks/useAsync";
 
 import PageTop from "../PageTop/PageTop";
 import Loader from "../Loader/Loader";
