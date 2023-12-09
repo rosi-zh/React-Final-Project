@@ -26,13 +26,13 @@ logged users can like/unlike other authors articles.
 ### User profile
 - **Users** needs to Login with email and password.
 - **Users** can access their personal profile page.
-- **Users** can edit owned wines.
-- **Users** can delete owned wines.
+- **Users** can edit owned articles.
+- **Users** can delete owned articles.
+- **Users** can like/unlike other user's articles.
 
-There are 3 already registered user, which can be used for immediate testing:
+There are 2 already registered user, which can be used for immediate testing:
 - user: peter@abv.bg password: 123456
 - user: george@abv.bg password: 123456
-- user: admin@abv.bg password: admin
 
 ## Home Page
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/79882c09-3595-43f6-96fb-764a0ce350de)
