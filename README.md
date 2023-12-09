@@ -42,9 +42,11 @@ There are 3 already registered user, which can be used for immediate testing:
 
 ### Guest View
 ***Navigation bar view from guest***
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/6a59ee56-3a66-4f95-8b90-dcba9d145913)
 
 ### User View
 ***Navigation bar view from user***
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/3b859174-36a5-4c05-9403-40968258ace9)
 
 ### Footer
 ***The footer is visible on every page***
