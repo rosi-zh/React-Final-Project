@@ -26,8 +26,9 @@ logged users can like/unlike other authors articles.
 ### User profile
 - **Users** needs to Login with email and password.
 - **Users** can access their personal profile page.
-- **Users** can edit owned wines.
-- **Users** can delete owned wines.
+- **Users** can edit owned articles.
+- **Users** can delete owned articles.
+- **Users** can like/unlike other user's articles.
 
 There are 3 already registered user, which can be used for immediate testing:
 - user: peter@abv.bg password: 123456
