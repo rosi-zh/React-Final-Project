@@ -16,7 +16,7 @@ export default function ArticleListItem({
                 <img className="img-fluid article-img" src={imageUrl} alt={title} />
             </div>
             <div className="bg-light p-4">
-                <Link to={`${Path.Articles}/${_id}`} className="d-block h5 lh-base mb-4">{title}</Link>
+                <Link to={`${Path.Articles}/${_id}`} className="d-block h5 lh-base mb-4" title={title}>{title.length > 36 ? title.substring(0, 34) + '...' : title}</Link>
                 <div className="text-muted border-top pt-4">
                     <small className="me-3"><i className="fa fa-calendar text-primary me-2"></i>{convertDate(_createdOn)}</small>
                 </div>
