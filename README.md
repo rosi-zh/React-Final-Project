@@ -97,3 +97,19 @@ There are 3 already registered user, which can be used for immediate testing:
 
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/72a459e5-5a31-47a3-9668-c5b2110b49ff)
 
+## Create article page
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/60d93d1d-cc70-49c5-bc1d-47df25e5a7ea)
+
+
+## Edit article page
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/74d9fff8-d1e6-449f-aff1-a840e9bff3d1)
+
+## About page
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/69a58bda-c462-4763-8f42-35a5f19f772f)
+
+## Contacts page
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/d3c33aa9-77a6-447d-960c-295c28c5caf9)
