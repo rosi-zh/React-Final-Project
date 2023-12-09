@@ -3,7 +3,7 @@
 For its creation ReactJS, HTML, CSS and Bootstap as used. Back end - Softuni practice server. 
 
 # Installation and usage
-1. Clone this repository to your local machine
+1. Clone this repository to your local machine. Clone link: https://github.com/rosi-zh/React-Final-Project.git
 2. Open project and navigate to server folder
 3. Start backend server with command: ```node server.js```
      - server will start on: http://localhost:3030
