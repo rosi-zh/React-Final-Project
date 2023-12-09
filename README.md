@@ -13,7 +13,7 @@ For its creation ReactJS, HTML, CSS and Bootstap as used. Back end - Softuni pra
     - server will start on: http://localhost:5173
 
 # Deployment
-**Healthy Place** website is deployed on: (https://healthy-place-project.web.app/)](https://healthy-place-project.web.app/)
+**Healthy Place** website is deployed on: https://healthy-place-project.web.app/
 
 # Brief overview
 The project is separated in to two roles - Guest and User.
@@ -36,6 +36,7 @@ There are 3 already registered user, which can be used for immediate testing:
 
 ## Home Page
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/79882c09-3595-43f6-96fb-764a0ce350de)
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/61db6bc3-d809-43dd-a0cd-041c4fcaa120)
 
 ## Page Navigation
 
