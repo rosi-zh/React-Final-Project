@@ -35,6 +35,7 @@ There are 3 already registered user, which can be used for immediate testing:
 - user: admin@abv.bg password: admin
 
 ## Home Page
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/79882c09-3595-43f6-96fb-764a0ce350de)
 
 ## Page Navigation
 
