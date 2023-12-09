@@ -36,7 +36,7 @@ There are 2 already registered user, which can be used for immediate testing:
 
 ## Home Page
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/79882c09-3595-43f6-96fb-764a0ce350de)
-![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/61db6bc3-d809-43dd-a0cd-041c4fcaa120)
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/6248c797-3451-4803-a5e9-bc2dc21d30dd)
 
 ## Page Navigation
 
@@ -77,11 +77,11 @@ There are 2 already registered user, which can be used for immediate testing:
 
 ## User profile page
 
-![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/3797be95-8830-48b2-9bcf-31f26beb1471)
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/54df1317-8aac-4ba5-9947-609bea816d06)
 
 ## Articles catalog
 
-![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/c907e898-538e-42b4-a598-c2916a2af3ee)
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/e93df454-4911-4eb4-89c9-7836754bde16)
 
 ## Article details page
 
@@ -101,10 +101,13 @@ There are 2 already registered user, which can be used for immediate testing:
 
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/60d93d1d-cc70-49c5-bc1d-47df25e5a7ea)
 
-
 ## Edit article page
 
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/74d9fff8-d1e6-449f-aff1-a840e9bff3d1)
+
+## Delete article
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/ca9df1c5-9418-4330-b01e-b3f956bc6945)
 
 ## About page
 
@@ -114,3 +117,5 @@ There are 2 already registered user, which can be used for immediate testing:
 
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/57ef27b6-c678-4011-96be-de77b83d721e)
 
+# License
+The project is release under MIT license.
