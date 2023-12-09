@@ -5,7 +5,7 @@ For its creation ReactJS, HTML, CSS and Bootstap as used. Back end - Softuni pra
 # Installation and usage
 1. Clone this repository to your local machine
 2. Open project and navigate to server folder
-3. Start server with command: ```node server.js```
+3. Start backend server with command: ```node server.js```
      - server will start on: http://localhost:3030
 4. To start client part navigate to client folder
 5. Run: ```npm install``` - to install all packages and dependencies
@@ -76,3 +76,5 @@ There are 3 already registered user, which can be used for immediate testing:
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/f6bc703c-4e81-4fff-b799-82429adb2668)
 
 ## User profile page
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/3797be95-8830-48b2-9bcf-31f26beb1471)
