@@ -13,7 +13,7 @@ For its creation ReactJS, HTML, CSS and Bootstap as used. Back end - Softuni pra
     - server will start on: http://localhost:5173
 
 # Deployment
-**Healthy Place** website is deployed on: [[https://wine-knowledge.web.app/](https://healthy-place-project.web.app/)](https://healthy-place-project.web.app/)
+**Healthy Place** website is deployed on: (https://healthy-place-project.web.app/)](https://healthy-place-project.web.app/)
 
 # Brief overview
 The project is separated in to two roles - Guest and User.
