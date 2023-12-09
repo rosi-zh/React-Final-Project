@@ -65,11 +65,14 @@ There are 3 already registered user, which can be used for immediate testing:
 - Repeat **_Password_**;
 
 **_The user password needs to be minimum 6 characters long._**
-  
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/dc211bd8-a2d5-4707-aec7-85b7b2efd7ca)
 
 ## User Login page
 ### _User Login form expects the following inputs:_
 - **_email_** address;
 - **_password_**;
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/f6bc703c-4e81-4fff-b799-82429adb2668)
 
 ## User profile page
