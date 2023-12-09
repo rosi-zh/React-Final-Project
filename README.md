@@ -14,6 +14,8 @@ For its creation ReactJS, HTML, CSS and Bootstap as used. Back end - Softuni pra
 
 # Deployment
 **Healthy Place** website is deployed on: https://healthy-place-project.web.app/
+- Front end is deployed using Firebase;
+- Back end is deployed using Render. 
 
 # Brief overview
 The project is separated in to two roles - Guest and User.
