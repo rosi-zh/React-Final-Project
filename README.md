@@ -78,3 +78,22 @@ There are 3 already registered user, which can be used for immediate testing:
 ## User profile page
 
 ![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/3797be95-8830-48b2-9bcf-31f26beb1471)
+
+## Articles catalog
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/c907e898-538e-42b4-a598-c2916a2af3ee)
+
+## Article details page
+
+### For unauthenticated users
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/623d7f81-5708-4d61-9e5a-e59841e92fd5)
+
+### Authenticated user(not owner) 
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/bf642d52-0076-493d-94f5-f8fbcc6902c8)
+
+### Authenticated user who is owner of article
+
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/72a459e5-5a31-47a3-9668-c5b2110b49ff)
+
