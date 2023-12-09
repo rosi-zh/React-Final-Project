@@ -112,4 +112,5 @@ There are 3 already registered user, which can be used for immediate testing:
 
 ## Contacts page
 
-![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/d3c33aa9-77a6-447d-960c-295c28c5caf9)
+![image](https://github.com/rosi-zh/React-Final-Project/assets/114585722/57ef27b6-c678-4011-96be-de77b83d721e)
+
